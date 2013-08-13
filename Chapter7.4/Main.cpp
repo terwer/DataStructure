@@ -1,14 +1,15 @@
 ﻿#include <stdio.h>
-#include "ALGraph.h"
+#include <stdlib.h>
+#include "AMLGraph.h"
 
-
-void visit(char *i)
+Status visit(VertexType v)
 {
-	printf("%s ",i);
+	printf("%s ",v);
+	return OK;
 }
 
 int main(){
-	ALGraph G;
+	AMLGraph G;
 	CreateGraph(&G);
 	Display(G);
 	DFSTraverse(G,visit);

@@ -6,7 +6,8 @@
 #define TRUE 1
 #define FALSE 0
 //#define INT_MAX 99999 //库函数已经定义了
-#define INFINITY INT_MAX //整型最大值代替∞
+//#define INFINITY INT_MAX //整型最大值代替∞
+#define INFINITY 99999 //99999代替∞
 #define MAX_VERTEX_NUM 20 //最大顶点个数
 #define MAX_NAME 5 //顶点字符串的最大长度+1
 #define MAX_INFO 20 //相关信息字符串的最大长度+1
@@ -144,7 +145,7 @@ Status CreateUDG(MGraph *G) {
 	//输入结点之间的联系
 	for (k=0; k<(*G).arcnum; ++k) {
 		printf("请输入第%d条边的顶点1、顶点2(以空格作为间隔): \n", k+1);
-		scanf("%s%s%*c", va, vb); //%*c吃掉回车符
+		scanf("%s%s", va, vb); //%*c吃掉回车符
 		i=LocateVex(*G, va);
 		j=LocateVex(*G, vb);
 		(*G).arcs[i][j].adj=(*G).arcs[j][i].adj=1; //无向图
@@ -442,6 +443,9 @@ void DFS(MGraph G, int v) {
 //初始条件: 图G存在,Visit是顶点的应用函数。算法7.4 
 //操作结果: 从第1个顶点起,深度优先遍历图G,并对每个顶点调用函数Visit, 一次且仅一次。一旦Visit()失败,则操作失败 
 void DFSTraverse(MGraph G, Status (*Visit)(VertexType)) { 
+	printf("\n************************************************************************\n");
+	printf("*深度优先遍历                                                          *\n");
+	printf("************************************************************************\n");
 	int v;
 	VisitFunc=Visit; //使用全局变量VisitFunc,使DFS不必设函数指针参数
 	for (v=0; v<G.vexnum; v++)
@@ -451,6 +455,7 @@ void DFSTraverse(MGraph G, Status (*Visit)(VertexType)) {
 			DFS(G, v); // 对尚未访问的顶点调用DFS 
 		}
 	}
+	printf("\n");
 }
 
 typedef VRType QElemType; //队列类型 
@@ -461,15 +466,19 @@ typedef VRType QElemType; //队列类型
 //一旦Visit()失败,则操作失败。
 //使用辅助队列Q和访问标志数组visited 
 void BFSTraverse(MGraph G, Status(*Visit)(VertexType)) { 
+	printf("\n************************************************************************\n");
+	printf("*广度优先遍历                                                          *\n");
+	printf("************************************************************************\n");
+
 	int v, u, w;
 	VertexType w1, u1;
 	LinkQueue Q;
 	for (v=0; v<G.vexnum; v++)
 		visited[v]=FALSE; //置初值
-	InitQueue(&Q); //置空的辅助队列Q/
+	InitQueue(&Q); //置空的辅助队列Q
 	for (v=0; v<G.vexnum; v++)
-		if (!visited[v]) //v尚未访问
-		{
+		 //v尚未访问
+		if (!visited[v]){
 			visited[v]=TRUE; //设置访问标志为TRUE(已访问)
 			Visit(G.vexs[v]);
 			EnQueue(&Q, v); //v入队列
@@ -511,6 +520,12 @@ void Display(MGraph G) {
 		strcpy(s, "无向网\0");
 		strcpy(s1, "边\0");
 	}
+
+	printf("\n************************************************************************\n");
+	printf("*输出%s的邻接矩阵                                                  *\n",s);
+	printf("************************************************************************\n");
+
+
 	printf("%d个顶点%d条%s的%s\n", G.vexnum, G.arcnum, s1, s);
 	for (i=0; i<G.vexnum; ++i)
 		//输出G.vexs 
