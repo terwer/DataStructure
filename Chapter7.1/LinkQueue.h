@@ -74,7 +74,6 @@ int QueueLength(LinkQueue Q){
 }
 
 //若队列不空,则用e返回Q的队头元素,并返回OK,否则返回ERROR
-//避免与bo2-6.c重名
 Status GetHead_Q(LinkQueue Q,QElemType *e) { 
   QueuePtr p;
   if(Q.front==Q.rear)
