@@ -7,7 +7,6 @@ Status visit(VertexType i) {
 }
 
 int main() {
-	setvbuf(stdout,NULL,_IONBF,0);
 	MGraph G;
 	CreateGraph(&G);
 	Display(G);
