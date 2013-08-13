@@ -1,13 +1,13 @@
-/*****Í¼µÄÊı×é£¨ÁÚ½Ó¾ØÕó£©´æ´¢±íÊ¾*****/
+ï»¿/*****å›¾çš„æ•°ç»„ï¼ˆé‚»æ¥çŸ©é˜µï¼‰å­˜å‚¨è¡¨ç¤º*****/
 #define OK 1
 #define ERROR 0 
 #define TRUE 1
 #define FALSE 0
-//#define INT_MAX 99999 //¿âº¯ÊıÒÑ¾­¶¨ÒåÁË
-#define INFINITY INT_MAX /* ÓÃÕûĞÍ×î´óÖµ´úÌæ¡Ş */
-#define MAX_VERTEX_NUM 20 /* ×î´ó¶¥µã¸öÊı */
-#define MAX_NAME 5 /* ¶¥µã×Ö·û´®µÄ×î´ó³¤¶È+1 */
-#define MAX_INFO 20 /* Ïà¹ØĞÅÏ¢×Ö·û´®µÄ×î´ó³¤¶È+1 */
+//#define INT_MAX 99999 //åº“å‡½æ•°å·²ç»å®šä¹‰äº†
+#define INFINITY INT_MAX /* ç”¨æ•´å‹æœ€å¤§å€¼ä»£æ›¿âˆ */
+#define MAX_VERTEX_NUM 20 /* æœ€å¤§é¡¶ç‚¹ä¸ªæ•° */
+#define MAX_NAME 5 /* é¡¶ç‚¹å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦+1 */
+#define MAX_INFO 20 /* ç›¸å…³ä¿¡æ¯å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦+1 */
 typedef int VRType;
 typedef char InfoType;
 typedef char VertexType[MAX_NAME];
@@ -16,23 +16,23 @@ typedef int Boolean;
 #include <string.h>
 #include <stdlib.h>
 
-typedef enum {DG,DN,UDG,UDN} GraphKind; /* {ÓĞÏòÍ¼,ÓĞÏòÍø,ÎŞÏòÍ¼,ÎŞÏòÍø} */
+typedef enum {DG,DN,UDG,UDN} GraphKind; /* {æœ‰å‘å›¾,æœ‰å‘ç½‘,æ— å‘å›¾,æ— å‘ç½‘} */
 typedef struct {
-	VRType adj; /* ¶¥µã¹ØÏµÀàĞÍ¡£¶ÔÎŞÈ¨Í¼£¬ÓÃ1(ÊÇ)»ò0(·ñ)±íÊ¾ÏàÁÚ·ñ£» */
-	/* ¶Ô´øÈ¨Í¼£¬cÔòÎªÈ¨ÖµÀàĞÍ */
-	InfoType *info; /* ¸Ã»¡Ïà¹ØĞÅÏ¢µÄÖ¸Õë(¿ÉÎŞ) */
+	VRType adj; /* é¡¶ç‚¹å…³ç³»ç±»å‹ã€‚å¯¹æ— æƒå›¾ï¼Œç”¨1(æ˜¯)æˆ–0(å¦)è¡¨ç¤ºç›¸é‚»å¦ï¼› */
+	/* å¯¹å¸¦æƒå›¾ï¼Œcåˆ™ä¸ºæƒå€¼ç±»å‹ */
+	InfoType *info; /* è¯¥å¼§ç›¸å…³ä¿¡æ¯çš„æŒ‡é’ˆ(å¯æ— ) */
 } ArcCell, AdjMatrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
 typedef struct {
-	VertexType vexs[MAX_VERTEX_NUM]; /* ¶¥µãÏòÁ¿ */
-	AdjMatrix arcs; /* ÁÚ½Ó¾ØÕó */
-	int vexnum, arcnum; /* Í¼µÄµ±Ç°¶¥µãÊıºÍ»¡Êı */
-	GraphKind kind; /* Í¼µÄÖÖÀà±êÖ¾ */
+	VertexType vexs[MAX_VERTEX_NUM]; /* é¡¶ç‚¹å‘é‡ */
+	AdjMatrix arcs; /* é‚»æ¥çŸ©é˜µ */
+	int vexnum, arcnum; /* å›¾çš„å½“å‰é¡¶ç‚¹æ•°å’Œå¼§æ•° */
+	GraphKind kind; /* å›¾çš„ç§ç±»æ ‡å¿— */
 } MGraph;
 
-/*Í¼µÄÊı×é(ÁÚ½Ó¾ØÕó)´æ´¢µÄ»ù±¾²Ù×÷(20¸ö)*/
+/*å›¾çš„æ•°ç»„(é‚»æ¥çŸ©é˜µ)å­˜å‚¨çš„åŸºæœ¬æ“ä½œ(20ä¸ª)*/
 
-/* ³õÊ¼Ìõ¼ş:Í¼G´æÔÚ,uºÍGÖĞ¶¥µãÓĞÏàÍ¬ÌØÕ÷ */
-/* ²Ù×÷½á¹û:ÈôGÖĞ´æÔÚ¶¥µãu,Ôò·µ»Ø¸Ã¶¥µãÔÚÍ¼ÖĞÎ»ÖÃ;·ñÔò·µ»Ø-1 */
+/* åˆå§‹æ¡ä»¶:å›¾Gå­˜åœ¨,uå’ŒGä¸­é¡¶ç‚¹æœ‰ç›¸åŒç‰¹å¾ */
+/* æ“ä½œç»“æœ:è‹¥Gä¸­å­˜åœ¨é¡¶ç‚¹u,åˆ™è¿”å›è¯¥é¡¶ç‚¹åœ¨å›¾ä¸­ä½ç½®;å¦åˆ™è¿”å›-1 */
 int LocateVex(MGraph G, VertexType u) {
 	int i;
 	for (i=0; i<G.vexnum; ++i)
@@ -41,39 +41,39 @@ int LocateVex(MGraph G, VertexType u) {
 	return -1;
 }
 
-/* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÓĞÏòÍ¼G */
+/* é‡‡ç”¨æ•°ç»„(é‚»æ¥çŸ©é˜µ)è¡¨ç¤ºæ³•,æ„é€ æœ‰å‘å›¾G */
 Status CreateDG(MGraph *G) {
 	int i, j, k, l, IncInfo;
 	char s[MAX_INFO], *info;
 	VertexType va, vb;
-	printf("ÇëÊäÈëÓĞÏòÍ¼GµÄ¶¥µãÊı¡¢»¡Êı¡¢»¡ÊÇ·ñº¬ÆäËüĞÅÏ¢(ÊÇ:1,·ñ:0),ÒÔ¿Õ¸ñ¸ô¿ª:\n");
+	printf("è¯·è¾“å…¥æœ‰å‘å›¾Gçš„é¡¶ç‚¹æ•°ã€å¼§æ•°ã€å¼§æ˜¯å¦å«å…¶å®ƒä¿¡æ¯(æ˜¯:1,å¦:0),ä»¥ç©ºæ ¼éš”å¼€:\n");
 	scanf("%d%d%d", &(*G).vexnum, &(*G).arcnum, &IncInfo);
-	/* ¹¹Ôì¶¥µãÏòÁ¿ */
+	/* æ„é€ é¡¶ç‚¹å‘é‡ */
 	for (i=0; i<(*G).vexnum; ++i) {
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÖµ(<%d¸ö×Ö·û):\n", i+1, MAX_NAME);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„å€¼(<%dä¸ªå­—ç¬¦):\n", i+1, MAX_NAME);
 		scanf("%s", (*G).vexs[i]);
 	}
-	/* ³õÊ¼»¯ÁÚ½Ó¾ØÕó */
+	/* åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ */
 	for (i=0; i<(*G).vexnum; ++i)
 		for (j=0; j<(*G).vexnum; ++j) {
-			(*G).arcs[i][j].adj=0; /* Í¼ */
+			(*G).arcs[i][j].adj=0; /* å›¾ */
 			(*G).arcs[i][j].info=NULL;
 		}
-	//ÊäÈë½áµãÖ®¼äµÄÁªÏµ
+	//è¾“å…¥ç»“ç‚¹ä¹‹é—´çš„è”ç³»
 	for (k=0; k<(*G).arcnum; ++k) {
-		printf("ÇëÊäÈëµÚ%dÌõ»¡µÄ»¡Î²¡¢»¡Í·(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô): \n", k+1);
-		scanf("%s%s%*c", va, vb); /* %*c³Ôµô»Ø³µ·û */
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡å¼§çš„å¼§å°¾ã€å¼§å¤´(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”): \n", k+1);
+		scanf("%s%s%*c", va, vb); /* %*cåƒæ‰å›è½¦ç¬¦ */
 		i=LocateVex(*G, va);
 		j=LocateVex(*G, vb);
-		(*G).arcs[i][j].adj=1; /* ÓĞÏòÍ¼ */
+		(*G).arcs[i][j].adj=1; /* æœ‰å‘å›¾ */
 		if (IncInfo) {
-			printf("ÇëÊäÈë¸Ã»¡µÄÏà¹ØĞÅÏ¢(<%d¸ö×Ö·û): ", MAX_INFO);
+			printf("è¯·è¾“å…¥è¯¥å¼§çš„ç›¸å…³ä¿¡æ¯(<%dä¸ªå­—ç¬¦): ", MAX_INFO);
 			gets(s);
 			l=strlen(s);
 			if (l) {
 				info=(char*)malloc((l+1)*sizeof(char));
 				strcpy(info, s);
-				(*G).arcs[i][j].info=info; /* ÓĞÏò */
+				(*G).arcs[i][j].info=info; /* æœ‰å‘ */
 			}
 		}
 	}
@@ -81,39 +81,39 @@ Status CreateDG(MGraph *G) {
 	return OK;
 }
 
-/* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÓĞÏòÍøG */
+/* é‡‡ç”¨æ•°ç»„(é‚»æ¥çŸ©é˜µ)è¡¨ç¤ºæ³•,æ„é€ æœ‰å‘ç½‘G */
 Status CreateDN(MGraph *G) {
 	int i, j, k, w, IncInfo;
 	char s[MAX_INFO], *info;
 	VertexType va, vb;
-	printf("ÇëÊäÈëÓĞÏòÍøGµÄ¶¥µãÊı¡¢»¡Êı¡¢»¡ÊÇ·ñº¬ÆäËüĞÅÏ¢(ÊÇ:1,·ñ:0): ");
+	printf("è¯·è¾“å…¥æœ‰å‘ç½‘Gçš„é¡¶ç‚¹æ•°ã€å¼§æ•°ã€å¼§æ˜¯å¦å«å…¶å®ƒä¿¡æ¯(æ˜¯:1,å¦:0): ");
 	scanf("%d%d%d", &(*G).vexnum, &(*G).arcnum, &IncInfo);
-	for (i=0; i<(*G).vexnum; ++i) /* ¹¹Ôì¶¥µãÏòÁ¿ */
+	for (i=0; i<(*G).vexnum; ++i) /* æ„é€ é¡¶ç‚¹å‘é‡ */
 	{
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÖµ(<%d¸ö×Ö·û):\n", i+1, MAX_NAME);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„å€¼(<%dä¸ªå­—ç¬¦):\n", i+1, MAX_NAME);
 
 		scanf("%s", (*G).vexs[i]);
 	}
 	for (i=0; i<(*G).vexnum; ++i)
-		/* ³õÊ¼»¯ÁÚ½Ó¾ØÕó */
+		/* åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ */
 		for (j=0; j<(*G).vexnum; ++j) {
-			(*G).arcs[i][j].adj=INFINITY; /* Íø */
+			(*G).arcs[i][j].adj=INFINITY; /* ç½‘ */
 			(*G).arcs[i][j].info=NULL;
 		}
 	for (k=0; k<(*G).arcnum; ++k) {
-		printf("ÇëÊäÈëµÚ%dÌõ»¡µÄ»¡Î²¡¢»¡Í·¡¢È¨Öµ(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô): \n", k+1);
-		scanf("%s%s%d%*c", va, vb, &w); /* %*c³Ôµô»Ø³µ·û */
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡å¼§çš„å¼§å°¾ã€å¼§å¤´ã€æƒå€¼(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”): \n", k+1);
+		scanf("%s%s%d%*c", va, vb, &w); /* %*cåƒæ‰å›è½¦ç¬¦ */
 		i=LocateVex(*G, va);
 		j=LocateVex(*G, vb);
-		(*G).arcs[i][j].adj=w; /* ÓĞÏòÍø */
+		(*G).arcs[i][j].adj=w; /* æœ‰å‘ç½‘ */
 		if (IncInfo) {
-			printf("ÇëÊäÈë¸Ã»¡µÄÏà¹ØĞÅÏ¢(<%d¸ö×Ö·û): ", MAX_INFO);
+			printf("è¯·è¾“å…¥è¯¥å¼§çš„ç›¸å…³ä¿¡æ¯(<%dä¸ªå­—ç¬¦): ", MAX_INFO);
 			gets(s);
 			w=strlen(s);
 			if (w) {
 				info=(char*)malloc((w+1)*sizeof(char));
 				strcpy(info, s);
-				(*G).arcs[i][j].info=info; /* ÓĞÏò */
+				(*G).arcs[i][j].info=info; /* æœ‰å‘ */
 			}
 		}
 	}
@@ -121,37 +121,37 @@ Status CreateDN(MGraph *G) {
 	return OK;
 }
 
-Status CreateUDG(MGraph *G) { /* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÎŞÏòÍ¼G */
+Status CreateUDG(MGraph *G) { /* é‡‡ç”¨æ•°ç»„(é‚»æ¥çŸ©é˜µ)è¡¨ç¤ºæ³•,æ„é€ æ— å‘å›¾G */
 	int i, j, k, l, IncInfo;
 	char s[MAX_INFO], *info;
 	VertexType va, vb;
-	printf("ÇëÊäÈëÎŞÏòÍ¼GµÄ¶¥µãÊı¡¢±ßÊı¡¢±ßÊÇ·ñº¬ÆäËüĞÅÏ¢(ÊÇ:1,·ñ:0): ");
+	printf("è¯·è¾“å…¥æ— å‘å›¾Gçš„é¡¶ç‚¹æ•°ã€è¾¹æ•°ã€è¾¹æ˜¯å¦å«å…¶å®ƒä¿¡æ¯(æ˜¯:1,å¦:0): ");
 	scanf("%d%d%d", &(*G).vexnum, &(*G).arcnum, &IncInfo);
-	for (i=0; i<(*G).vexnum; ++i) /* ¹¹Ôì¶¥µãÏòÁ¿ */
+	for (i=0; i<(*G).vexnum; ++i) /* æ„é€ é¡¶ç‚¹å‘é‡ */
 	{
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÖµ(<%d¸ö×Ö·û):\n", i+1, MAX_NAME);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„å€¼(<%dä¸ªå­—ç¬¦):\n", i+1, MAX_NAME);
 		scanf("%s", (*G).vexs[i]);
 	}
 	for (i=0; i<(*G).vexnum; ++i)
-		/* ³õÊ¼»¯ÁÚ½Ó¾ØÕó */
+		/* åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ */
 		for (j=0; j<(*G).vexnum; ++j) {
-			(*G).arcs[i][j].adj=0; /* Í¼ */
+			(*G).arcs[i][j].adj=0; /* å›¾ */
 			(*G).arcs[i][j].info=NULL;
 		}
 	for (k=0; k<(*G).arcnum; ++k) {
-		printf("ÇëÊäÈëµÚ%dÌõ±ßµÄ¶¥µã1¡¢¶¥µã2(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô): \n", k+1);
-		scanf("%s%s%*c", va, vb); /* %*c³Ôµô»Ø³µ·û */
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡è¾¹çš„é¡¶ç‚¹1ã€é¡¶ç‚¹2(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”): \n", k+1);
+		scanf("%s%s%*c", va, vb); /* %*cåƒæ‰å›è½¦ç¬¦ */
 		i=LocateVex(*G, va);
 		j=LocateVex(*G, vb);
-		(*G).arcs[i][j].adj=(*G).arcs[j][i].adj=1; /* ÎŞÏòÍ¼ */
+		(*G).arcs[i][j].adj=(*G).arcs[j][i].adj=1; /* æ— å‘å›¾ */
 		if (IncInfo) {
-			printf("ÇëÊäÈë¸Ã±ßµÄÏà¹ØĞÅÏ¢(<%d¸ö×Ö·û): ", MAX_INFO);
+			printf("è¯·è¾“å…¥è¯¥è¾¹çš„ç›¸å…³ä¿¡æ¯(<%dä¸ªå­—ç¬¦): ", MAX_INFO);
 			gets(s);
 			l=strlen(s);
 			if (l) {
 				info=(char*)malloc((l+1)*sizeof(char));
 				strcpy(info, s);
-				(*G).arcs[i][j].info=(*G).arcs[j][i].info=info; /* ÎŞÏò */
+				(*G).arcs[i][j].info=(*G).arcs[j][i].info=info; /* æ— å‘ */
 			}
 		}
 	}
@@ -159,37 +159,37 @@ Status CreateUDG(MGraph *G) { /* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÎŞÏòÍ¼G */
 	return OK;
 }
 
-Status CreateUDN(MGraph *G) { /* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÎŞÏòÍøG¡£Ëã·¨7.2 */
+Status CreateUDN(MGraph *G) { /* é‡‡ç”¨æ•°ç»„(é‚»æ¥çŸ©é˜µ)è¡¨ç¤ºæ³•,æ„é€ æ— å‘ç½‘Gã€‚ç®—æ³•7.2 */
 	int i, j, k, w, IncInfo;
 	char s[MAX_INFO], *info;
 	VertexType va, vb;
-	printf("ÇëÊäÈëÎŞÏòÍøGµÄ¶¥µãÊı,±ßÊı,±ßÊÇ·ñº¬ÆäËüĞÅÏ¢(ÊÇ:1,·ñ:0): ");
+	printf("è¯·è¾“å…¥æ— å‘ç½‘Gçš„é¡¶ç‚¹æ•°,è¾¹æ•°,è¾¹æ˜¯å¦å«å…¶å®ƒä¿¡æ¯(æ˜¯:1,å¦:0): ");
 	scanf("%d%d%d", &(*G).vexnum, &(*G).arcnum, &IncInfo);
-	for (i=0; i<(*G).vexnum; ++i) /* ¹¹Ôì¶¥µãÏòÁ¿ */
+	for (i=0; i<(*G).vexnum; ++i) /* æ„é€ é¡¶ç‚¹å‘é‡ */
 	{
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÖµ(<%d¸ö×Ö·û):\n", i+1, MAX_NAME);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„å€¼(<%dä¸ªå­—ç¬¦):\n", i+1, MAX_NAME);
 		scanf("%s", (*G).vexs[i]);
 	}
 	for (i=0; i<(*G).vexnum; ++i)
-		/* ³õÊ¼»¯ÁÚ½Ó¾ØÕó */
+		/* åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ */
 		for (j=0; j<(*G).vexnum; ++j) {
-			(*G).arcs[i][j].adj=INFINITY; /* Íø */
+			(*G).arcs[i][j].adj=INFINITY; /* ç½‘ */
 			(*G).arcs[i][j].info=NULL;
 		}
 	for (k=0; k<(*G).arcnum; ++k) {
-		printf("ÇëÊäÈëµÚ%dÌõ±ßµÄ¶¥µã1¡¢¶¥µã2¡¢È¨Öµ(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô): \n", k+1);
-		scanf("%s%s%d%*c", va, vb, &w); /* %*c³Ôµô»Ø³µ·û */
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡è¾¹çš„é¡¶ç‚¹1ã€é¡¶ç‚¹2ã€æƒå€¼(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”): \n", k+1);
+		scanf("%s%s%d%*c", va, vb, &w); /* %*cåƒæ‰å›è½¦ç¬¦ */
 		i=LocateVex(*G, va);
 		j=LocateVex(*G, vb);
-		(*G).arcs[i][j].adj=(*G).arcs[j][i].adj=w; /* ÎŞÏò */
+		(*G).arcs[i][j].adj=(*G).arcs[j][i].adj=w; /* æ— å‘ */
 		if (IncInfo) {
-			printf("ÇëÊäÈë¸Ã±ßµÄÏà¹ØĞÅÏ¢(<%d¸ö×Ö·û): ", MAX_INFO);
+			printf("è¯·è¾“å…¥è¯¥è¾¹çš„ç›¸å…³ä¿¡æ¯(<%dä¸ªå­—ç¬¦): ", MAX_INFO);
 			gets(s);
 			w=strlen(s);
 			if (w) {
 				info=(char*)malloc((w+1)*sizeof(char));
 				strcpy(info, s);
-				(*G).arcs[i][j].info=(*G).arcs[j][i].info=info; /* ÎŞÏò */
+				(*G).arcs[i][j].info=(*G).arcs[j][i].info=info; /* æ— å‘ */
 			}
 		}
 	}
@@ -197,44 +197,44 @@ Status CreateUDN(MGraph *G) { /* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÎŞÏòÍøG¡£Ëã·¨7.2 *
 	return OK;
 }
 
-Status CreateGraph(MGraph *G) { /* ²ÉÓÃÊı×é(ÁÚ½Ó¾ØÕó)±íÊ¾·¨,¹¹ÔìÍ¼G¡£Ëã·¨7.1 */
-	printf("ÇëÊäÈëÍ¼GµÄÀàĞÍ(ÓĞÏòÍ¼:0,ÓĞÏòÍø:1,ÎŞÏòÍ¼:2,ÎŞÏòÍø:3): ");
+Status CreateGraph(MGraph *G) { /* é‡‡ç”¨æ•°ç»„(é‚»æ¥çŸ©é˜µ)è¡¨ç¤ºæ³•,æ„é€ å›¾Gã€‚ç®—æ³•7.1 */
+	printf("è¯·è¾“å…¥å›¾Gçš„ç±»å‹(æœ‰å‘å›¾:0,æœ‰å‘ç½‘:1,æ— å‘å›¾:2,æ— å‘ç½‘:3): ");
 	scanf("%d", &(*G).kind);
 	switch ((*G).kind) {
 	case DG:
-		return CreateDG(G); /* ¹¹ÔìÓĞÏòÍ¼ */
+		return CreateDG(G); /* æ„é€ æœ‰å‘å›¾ */
 	case DN:
-		return CreateDN(G); /* ¹¹ÔìÓĞÏòÍø */
+		return CreateDN(G); /* æ„é€ æœ‰å‘ç½‘ */
 	case UDG:
-		return CreateUDG(G); /* ¹¹ÔìÎŞÏòÍ¼ */
+		return CreateUDG(G); /* æ„é€ æ— å‘å›¾ */
 	case UDN:
-		return CreateUDN(G); /* ¹¹ÔìÎŞÏòÍø */
+		return CreateUDN(G); /* æ„é€ æ— å‘ç½‘ */
 	default:
 		return ERROR;
 	}
 }
 
-/* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ¡£²Ù×÷½á¹û: Ïú»ÙÍ¼G */
+/* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨ã€‚æ“ä½œç»“æœ: é”€æ¯å›¾G */
 void DestroyGraph(MGraph *G) {
 	int i, j;
-	if ((*G).kind<2) /* ÓĞÏò */
-		for (i=0; i<(*G).vexnum; i++) /* ÊÍ·Å»¡µÄÏà¹ØĞÅÏ¢(Èç¹ûÓĞµÄ»°) */
+	if ((*G).kind<2) /* æœ‰å‘ */
+		for (i=0; i<(*G).vexnum; i++) /* é‡Šæ”¾å¼§çš„ç›¸å…³ä¿¡æ¯(å¦‚æœæœ‰çš„è¯) */
 		{
 			for (j=0; j<(*G).vexnum; j++)
-				if ((*G).arcs[i][j].adj==1&&(*G).kind==0||(*G).arcs[i][j].adj!=INFINITY&&(*G).kind==1) /* ÓĞÏòÍ¼µÄ»¡||ÓĞÏòÍøµÄ»¡ */
-					if ((*G).arcs[i][j].info) /* ÓĞÏà¹ØĞÅÏ¢ */
+				if ((*G).arcs[i][j].adj==1&&(*G).kind==0||(*G).arcs[i][j].adj!=INFINITY&&(*G).kind==1) /* æœ‰å‘å›¾çš„å¼§||æœ‰å‘ç½‘çš„å¼§ */
+					if ((*G).arcs[i][j].info) /* æœ‰ç›¸å…³ä¿¡æ¯ */
 					{
 						free((*G).arcs[i][j].info);
 						(*G).arcs[i][j].info=NULL;
 					}
 		}
 	else
-		/* ÎŞÏò */
+		/* æ— å‘ */
 		for (i=0; i<(*G).vexnum; i++)
-			/* ÊÍ·Å±ßµÄÏà¹ØĞÅÏ¢(Èç¹ûÓĞµÄ»°) */
+			/* é‡Šæ”¾è¾¹çš„ç›¸å…³ä¿¡æ¯(å¦‚æœæœ‰çš„è¯) */
 			for (j=i+1; j<(*G).vexnum; j++)
-				if ((*G).arcs[i][j].adj==1&&(*G).kind==2||(*G).arcs[i][j].adj!=INFINITY&&(*G).kind==3) /* ÎŞÏòÍ¼µÄ±ß||ÎŞÏòÍøµÄ±ß */
-					if ((*G).arcs[i][j].info) /* ÓĞÏà¹ØĞÅÏ¢ */
+				if ((*G).arcs[i][j].adj==1&&(*G).kind==2||(*G).arcs[i][j].adj!=INFINITY&&(*G).kind==3) /* æ— å‘å›¾çš„è¾¹||æ— å‘ç½‘çš„è¾¹ */
+					if ((*G).arcs[i][j].info) /* æœ‰ç›¸å…³ä¿¡æ¯ */
 					{
 						free((*G).arcs[i][j].info);
 						(*G).arcs[i][j].info=(*G).arcs[j][i].info=NULL;
@@ -243,26 +243,26 @@ void DestroyGraph(MGraph *G) {
 	(*G).arcnum=0;
 }
 
-VertexType* GetVex(MGraph G, int v) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ£¬vÊÇGÖĞÄ³¸ö¶¥µãµÄĞòºÅ¡£²Ù×÷½á¹û: ·µ»ØvµÄÖµ */
+VertexType* GetVex(MGraph G, int v) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨ï¼Œvæ˜¯Gä¸­æŸä¸ªé¡¶ç‚¹çš„åºå·ã€‚æ“ä½œç»“æœ: è¿”å›vçš„å€¼ */
 	if (v>=G.vexnum||v<0)
 		exit(ERROR);
 	return &G.vexs[v];
 }
 
-Status PutVex(MGraph *G, VertexType v, VertexType value) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ£¬vÊÇGÖĞÄ³¸ö¶¥µã¡£²Ù×÷½á¹û: ¶Ôv¸³ĞÂÖµvalue */
+Status PutVex(MGraph *G, VertexType v, VertexType value) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨ï¼Œvæ˜¯Gä¸­æŸä¸ªé¡¶ç‚¹ã€‚æ“ä½œç»“æœ: å¯¹vèµ‹æ–°å€¼value */
 	int k;
-	k=LocateVex(*G, v); /* kÎª¶¥µãvÔÚÍ¼GÖĞµÄĞòºÅ */
+	k=LocateVex(*G, v); /* kä¸ºé¡¶ç‚¹våœ¨å›¾Gä¸­çš„åºå· */
 	if (k<0)
 		return ERROR;
 	strcpy((*G).vexs[k], value);
 	return OK;
 }
 
-int FirstAdjVex(MGraph G, VertexType v) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vÊÇGÖĞÄ³¸ö¶¥µã */
-	/* ²Ù×÷½á¹û: ·µ»ØvµÄµÚÒ»¸öÁÚ½Ó¶¥µãµÄĞòºÅ¡£Èô¶¥µãÔÚGÖĞÃ»ÓĞÁÚ½Ó¶¥µã,Ôò·µ»Ø-1 */
+int FirstAdjVex(MGraph G, VertexType v) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,væ˜¯Gä¸­æŸä¸ªé¡¶ç‚¹ */
+	/* æ“ä½œç»“æœ: è¿”å›vçš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹çš„åºå·ã€‚è‹¥é¡¶ç‚¹åœ¨Gä¸­æ²¡æœ‰é‚»æ¥é¡¶ç‚¹,åˆ™è¿”å›-1 */
 	int i, j=0, k;
-	k=LocateVex(G, v); /* kÎª¶¥µãvÔÚÍ¼GÖĞµÄĞòºÅ */
-	if (G.kind==DN||G.kind==UDN) /* Íø */
+	k=LocateVex(G, v); /* kä¸ºé¡¶ç‚¹våœ¨å›¾Gä¸­çš„åºå· */
+	if (G.kind==DN||G.kind==UDN) /* ç½‘ */
 		j=INFINITY;
 	for (i=0; i<G.vexnum; i++)
 		if (G.arcs[k][i].adj!=j)
@@ -270,13 +270,13 @@ int FirstAdjVex(MGraph G, VertexType v) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vÊÇGÖĞÄ³¸ö¶¥µã */
 	return -1;
 }
 
-int NextAdjVex(MGraph G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vÊÇGÖĞÄ³¸ö¶¥µã,wÊÇvµÄÁÚ½Ó¶¥µã */
-	/* ²Ù×÷½á¹û: ·µ»ØvµÄ(Ïà¶ÔÓÚwµÄ)ÏÂÒ»¸öÁÚ½Ó¶¥µãµÄĞòºÅ, */
-	/*           ÈôwÊÇvµÄ×îºóÒ»¸öÁÚ½Ó¶¥µã,Ôò·µ»Ø-1 */
+int NextAdjVex(MGraph G, VertexType v, VertexType w) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,væ˜¯Gä¸­æŸä¸ªé¡¶ç‚¹,wæ˜¯vçš„é‚»æ¥é¡¶ç‚¹ */
+	/* æ“ä½œç»“æœ: è¿”å›vçš„(ç›¸å¯¹äºwçš„)ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹çš„åºå·, */
+	/*           è‹¥wæ˜¯vçš„æœ€åä¸€ä¸ªé‚»æ¥é¡¶ç‚¹,åˆ™è¿”å›-1 */
 	int i, j=0, k1, k2;
-	k1=LocateVex(G, v); /* k1Îª¶¥µãvÔÚÍ¼GÖĞµÄĞòºÅ */
-	k2=LocateVex(G, w); /* k2Îª¶¥µãwÔÚÍ¼GÖĞµÄĞòºÅ */
-	if (G.kind==DN||G.kind==UDN) /* Íø */
+	k1=LocateVex(G, v); /* k1ä¸ºé¡¶ç‚¹våœ¨å›¾Gä¸­çš„åºå· */
+	k2=LocateVex(G, w); /* k2ä¸ºé¡¶ç‚¹wåœ¨å›¾Gä¸­çš„åºå· */
+	if (G.kind==DN||G.kind==UDN) /* ç½‘ */
 		j=INFINITY;
 	for (i=k2+1; i<G.vexnum; i++)
 		if (G.arcs[k1][i].adj!=j)
@@ -284,82 +284,82 @@ int NextAdjVex(MGraph G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vÊÇG
 	return -1;
 }
 
-void InsertVex(MGraph *G, VertexType v) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vºÍÍ¼GÖĞ¶¥µãÓĞÏàÍ¬ÌØÕ÷ */
-	/* ²Ù×÷½á¹û: ÔÚÍ¼GÖĞÔöÌíĞÂ¶¥µãv(²»ÔöÌíÓë¶¥µãÏà¹ØµÄ»¡,Áô´ıInsertArc()È¥×ö) */
+void InsertVex(MGraph *G, VertexType v) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,vå’Œå›¾Gä¸­é¡¶ç‚¹æœ‰ç›¸åŒç‰¹å¾ */
+	/* æ“ä½œç»“æœ: åœ¨å›¾Gä¸­å¢æ·»æ–°é¡¶ç‚¹v(ä¸å¢æ·»ä¸é¡¶ç‚¹ç›¸å…³çš„å¼§,ç•™å¾…InsertArc()å»åš) */
 	int i;
-	strcpy((*G).vexs[(*G).vexnum], v); /* ¹¹ÔìĞÂ¶¥µãÏòÁ¿ */
+	strcpy((*G).vexs[(*G).vexnum], v); /* æ„é€ æ–°é¡¶ç‚¹å‘é‡ */
 	for (i=0; i<=(*G).vexnum; i++) {
-		if ((*G).kind%2) /* Íø */
+		if ((*G).kind%2) /* ç½‘ */
 		{
-			(*G).arcs[(*G).vexnum][i].adj=INFINITY; /* ³õÊ¼»¯¸ÃĞĞÁÚ½Ó¾ØÕóµÄÖµ(ÎŞ±ß»ò»¡) */
-			(*G).arcs[i][(*G).vexnum].adj=INFINITY; /* ³õÊ¼»¯¸ÃÁĞÁÚ½Ó¾ØÕóµÄÖµ(ÎŞ±ß»ò»¡) */
-		} else /* Í¼ */
+			(*G).arcs[(*G).vexnum][i].adj=INFINITY; /* åˆå§‹åŒ–è¯¥è¡Œé‚»æ¥çŸ©é˜µçš„å€¼(æ— è¾¹æˆ–å¼§) */
+			(*G).arcs[i][(*G).vexnum].adj=INFINITY; /* åˆå§‹åŒ–è¯¥åˆ—é‚»æ¥çŸ©é˜µçš„å€¼(æ— è¾¹æˆ–å¼§) */
+		} else /* å›¾ */
 		{
-			(*G).arcs[(*G).vexnum][i].adj=0; /* ³õÊ¼»¯¸ÃĞĞÁÚ½Ó¾ØÕóµÄÖµ(ÎŞ±ß»ò»¡) */
-			(*G).arcs[i][(*G).vexnum].adj=0; /* ³õÊ¼»¯¸ÃÁĞÁÚ½Ó¾ØÕóµÄÖµ(ÎŞ±ß»ò»¡) */
+			(*G).arcs[(*G).vexnum][i].adj=0; /* åˆå§‹åŒ–è¯¥è¡Œé‚»æ¥çŸ©é˜µçš„å€¼(æ— è¾¹æˆ–å¼§) */
+			(*G).arcs[i][(*G).vexnum].adj=0; /* åˆå§‹åŒ–è¯¥åˆ—é‚»æ¥çŸ©é˜µçš„å€¼(æ— è¾¹æˆ–å¼§) */
 		}
-		(*G).arcs[(*G).vexnum][i].info=NULL; /* ³õÊ¼»¯Ïà¹ØĞÅÏ¢Ö¸Õë */
+		(*G).arcs[(*G).vexnum][i].info=NULL; /* åˆå§‹åŒ–ç›¸å…³ä¿¡æ¯æŒ‡é’ˆ */
 		(*G).arcs[i][(*G).vexnum].info=NULL;
 	}
-	(*G).vexnum+=1; /* Í¼GµÄ¶¥µãÊı¼Ó1 */
+	(*G).vexnum+=1; /* å›¾Gçš„é¡¶ç‚¹æ•°åŠ 1 */
 }
 
-Status DeleteVex(MGraph *G, VertexType v) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vÊÇGÖĞÄ³¸ö¶¥µã¡£²Ù×÷½á¹û: É¾³ıGÖĞ¶¥µãv¼°ÆäÏà¹ØµÄ»¡ */
+Status DeleteVex(MGraph *G, VertexType v) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,væ˜¯Gä¸­æŸä¸ªé¡¶ç‚¹ã€‚æ“ä½œç»“æœ: åˆ é™¤Gä¸­é¡¶ç‚¹våŠå…¶ç›¸å…³çš„å¼§ */
 	int i, j, k;
 	VRType m=0;
-	k=LocateVex(*G, v); /* kÎª´ıÉ¾³ı¶¥µãvµÄĞòºÅ */
-	if (k<0) /* v²»ÊÇÍ¼GµÄ¶¥µã */
+	k=LocateVex(*G, v); /* kä¸ºå¾…åˆ é™¤é¡¶ç‚¹vçš„åºå· */
+	if (k<0) /* vä¸æ˜¯å›¾Gçš„é¡¶ç‚¹ */
 		return ERROR;
-	if ((*G).kind==DN||(*G).kind==UDN) /* Íø */
+	if ((*G).kind==DN||(*G).kind==UDN) /* ç½‘ */
 		m=INFINITY;
 	for (j=0; j<(*G).vexnum; j++)
-		if ((*G).arcs[j][k].adj!=m) /* ÓĞÈë»¡»ò±ß */
+		if ((*G).arcs[j][k].adj!=m) /* æœ‰å…¥å¼§æˆ–è¾¹ */
 		{
-			if ((*G).arcs[j][k].info) /* ÓĞÏà¹ØĞÅÏ¢ */
-				free((*G).arcs[j][k].info); /* ÊÍ·ÅÏà¹ØĞÅÏ¢ */
-			(*G).arcnum--; /* ĞŞ¸Ä»¡Êı */
+			if ((*G).arcs[j][k].info) /* æœ‰ç›¸å…³ä¿¡æ¯ */
+				free((*G).arcs[j][k].info); /* é‡Šæ”¾ç›¸å…³ä¿¡æ¯ */
+			(*G).arcnum--; /* ä¿®æ”¹å¼§æ•° */
 		}
-	if ((*G).kind==DG||(*G).kind==DN) /* ÓĞÏò */
+	if ((*G).kind==DG||(*G).kind==DN) /* æœ‰å‘ */
 		for (j=0; j<(*G).vexnum; j++)
-			if ((*G).arcs[k][j].adj!=m) /* ÓĞ³ö»¡ */
+			if ((*G).arcs[k][j].adj!=m) /* æœ‰å‡ºå¼§ */
 			{
-				if ((*G).arcs[k][j].info) /* ÓĞÏà¹ØĞÅÏ¢ */
-					free((*G).arcs[k][j].info); /* ÊÍ·ÅÏà¹ØĞÅÏ¢ */
-				(*G).arcnum--; /* ĞŞ¸Ä»¡Êı */
+				if ((*G).arcs[k][j].info) /* æœ‰ç›¸å…³ä¿¡æ¯ */
+					free((*G).arcs[k][j].info); /* é‡Šæ”¾ç›¸å…³ä¿¡æ¯ */
+				(*G).arcnum--; /* ä¿®æ”¹å¼§æ•° */
 			}
 	for (j=k+1; j<(*G).vexnum; j++)
-		/* ĞòºÅkºóÃæµÄ¶¥µãÏòÁ¿ÒÀ´ÎÇ°ÒÆ */
+		/* åºå·kåé¢çš„é¡¶ç‚¹å‘é‡ä¾æ¬¡å‰ç§» */
 		strcpy((*G).vexs[j-1], (*G).vexs[j]);
 	for (i=0; i<(*G).vexnum; i++)
 		for (j=k+1; j<(*G).vexnum; j++)
-			(*G).arcs[i][j-1]=(*G).arcs[i][j]; /* ÒÆ¶¯´ıÉ¾³ı¶¥µãÖ®ºóµÄ¾ØÕóÔªËØ */
+			(*G).arcs[i][j-1]=(*G).arcs[i][j]; /* ç§»åŠ¨å¾…åˆ é™¤é¡¶ç‚¹ä¹‹åçš„çŸ©é˜µå…ƒç´  */
 	for (i=0; i<(*G).vexnum; i++)
 		for (j=k+1; j<(*G).vexnum; j++)
-			(*G).arcs[j-1][i]=(*G).arcs[j][i]; /* ÒÆ¶¯´ıÉ¾³ı¶¥µãÖ®ÏÂµÄ¾ØÕóÔªËØ */
-	(*G).vexnum--; /* ¸üĞÂÍ¼µÄ¶¥µãÊı */
+			(*G).arcs[j-1][i]=(*G).arcs[j][i]; /* ç§»åŠ¨å¾…åˆ é™¤é¡¶ç‚¹ä¹‹ä¸‹çš„çŸ©é˜µå…ƒç´  */
+	(*G).vexnum--; /* æ›´æ–°å›¾çš„é¡¶ç‚¹æ•° */
 	return OK;
 }
 
-Status InsertArc(MGraph *G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vºÍWÊÇGÖĞÁ½¸ö¶¥µã */
-	/* ²Ù×÷½á¹û: ÔÚGÖĞÔöÌí»¡<v,w>,ÈôGÊÇÎŞÏòµÄ,Ôò»¹ÔöÌí¶Ô³Æ»¡<w,v> */
+Status InsertArc(MGraph *G, VertexType v, VertexType w) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,vå’ŒWæ˜¯Gä¸­ä¸¤ä¸ªé¡¶ç‚¹ */
+	/* æ“ä½œç»“æœ: åœ¨Gä¸­å¢æ·»å¼§<v,w>,è‹¥Gæ˜¯æ— å‘çš„,åˆ™è¿˜å¢æ·»å¯¹ç§°å¼§<w,v> */
 	int i, l, v1, w1;
 	char *info, s[MAX_INFO];
-	v1=LocateVex(*G, v); /* Î² */
-	w1=LocateVex(*G, w); /* Í· */
+	v1=LocateVex(*G, v); /* å°¾ */
+	w1=LocateVex(*G, w); /* å¤´ */
 	if (v1<0||w1<0)
 		return ERROR;
-	(*G).arcnum++; /* »¡»ò±ßÊı¼Ó1 */
-	if ((*G).kind%2) /* Íø */
+	(*G).arcnum++; /* å¼§æˆ–è¾¹æ•°åŠ 1 */
+	if ((*G).kind%2) /* ç½‘ */
 	{
-		printf("ÇëÊäÈë´Ë»¡»ò±ßµÄÈ¨Öµ: ");
+		printf("è¯·è¾“å…¥æ­¤å¼§æˆ–è¾¹çš„æƒå€¼: ");
 		scanf("%d", &(*G).arcs[v1][w1].adj);
 	} else
-		/* Í¼ */
+		/* å›¾ */
 		(*G).arcs[v1][w1].adj=1;
-	printf("ÊÇ·ñÓĞ¸Ã»¡»ò±ßµÄÏà¹ØĞÅÏ¢(0:ÎŞ 1:ÓĞ): ");
+	printf("æ˜¯å¦æœ‰è¯¥å¼§æˆ–è¾¹çš„ç›¸å…³ä¿¡æ¯(0:æ—  1:æœ‰): ");
 	scanf("%d%*c", &i);
 	if (i) {
-		printf("ÇëÊäÈë¸Ã»¡»ò±ßµÄÏà¹ØĞÅÏ¢(<%d¸ö×Ö·û)£º", MAX_INFO);
+		printf("è¯·è¾“å…¥è¯¥å¼§æˆ–è¾¹çš„ç›¸å…³ä¿¡æ¯(<%dä¸ªå­—ç¬¦)ï¼š", MAX_INFO);
 		gets(s);
 		l=strlen(s);
 		if (l) {
@@ -368,32 +368,32 @@ Status InsertArc(MGraph *G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,v
 			(*G).arcs[v1][w1].info=info;
 		}
 	}
-	if ((*G).kind>1) /* ÎŞÏò */
+	if ((*G).kind>1) /* æ— å‘ */
 	{
 		(*G).arcs[w1][v1].adj=(*G).arcs[v1][w1].adj;
-		(*G).arcs[w1][v1].info=(*G).arcs[v1][w1].info; /* Ö¸ÏòÍ¬Ò»¸öÏà¹ØĞÅÏ¢ */
+		(*G).arcs[w1][v1].info=(*G).arcs[v1][w1].info; /* æŒ‡å‘åŒä¸€ä¸ªç›¸å…³ä¿¡æ¯ */
 	}
 	return OK;
 }
 
-Status DeleteArc(MGraph *G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,vºÍwÊÇGÖĞÁ½¸ö¶¥µã */
-	/* ²Ù×÷½á¹û: ÔÚGÖĞÉ¾³ı»¡<v,w>,ÈôGÊÇÎŞÏòµÄ,Ôò»¹É¾³ı¶Ô³Æ»¡<w,v> */
+Status DeleteArc(MGraph *G, VertexType v, VertexType w) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,vå’Œwæ˜¯Gä¸­ä¸¤ä¸ªé¡¶ç‚¹ */
+	/* æ“ä½œç»“æœ: åœ¨Gä¸­åˆ é™¤å¼§<v,w>,è‹¥Gæ˜¯æ— å‘çš„,åˆ™è¿˜åˆ é™¤å¯¹ç§°å¼§<w,v> */
 	int v1, w1;
-	v1=LocateVex(*G, v); /* Î² */
-	w1=LocateVex(*G, w); /* Í· */
-	if (v1<0||w1<0) /* v1¡¢w1µÄÖµ²»ºÏ·¨ */
+	v1=LocateVex(*G, v); /* å°¾ */
+	w1=LocateVex(*G, w); /* å¤´ */
+	if (v1<0||w1<0) /* v1ã€w1çš„å€¼ä¸åˆæ³• */
 		return ERROR;
-	if ((*G).kind%2==0) /* Í¼ */
+	if ((*G).kind%2==0) /* å›¾ */
 		(*G).arcs[v1][w1].adj=0;
 	else
-		/* Íø */
+		/* ç½‘ */
 		(*G).arcs[v1][w1].adj=INFINITY;
-	if ((*G).arcs[v1][w1].info) /* ÓĞÆäËüĞÅÏ¢ */
+	if ((*G).arcs[v1][w1].info) /* æœ‰å…¶å®ƒä¿¡æ¯ */
 	{
 		free((*G).arcs[v1][w1].info);
 		(*G).arcs[v1][w1].info=NULL;
 	}
-	if ((*G).kind>=2) /* ÎŞÏò,É¾³ı¶Ô³Æ»¡<w,v> */
+	if ((*G).kind>=2) /* æ— å‘,åˆ é™¤å¯¹ç§°å¼§<w,v> */
 	{
 		(*G).arcs[w1][v1].adj=(*G).arcs[v1][w1].adj;
 		(*G).arcs[w1][v1].info=NULL;
@@ -402,13 +402,13 @@ Status DeleteArc(MGraph *G, VertexType v, VertexType w) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,v
 	return OK;
 }
 
-Boolean visited[MAX_VERTEX_NUM]; /* ·ÃÎÊ±êÖ¾Êı×é(È«¾ÖÁ¿) */
-Status(*VisitFunc)(VertexType); /* º¯Êı±äÁ¿ */
-void DFS(MGraph G, int v) { /* ´ÓµÚv¸ö¶¥µã³ö·¢µİ¹éµØÉî¶ÈÓÅÏÈ±éÀúÍ¼G¡£Ëã·¨7.5 */
+Boolean visited[MAX_VERTEX_NUM]; /* è®¿é—®æ ‡å¿—æ•°ç»„(å…¨å±€é‡) */
+Status(*VisitFunc)(VertexType); /* å‡½æ•°å˜é‡ */
+void DFS(MGraph G, int v) { /* ä»ç¬¬vä¸ªé¡¶ç‚¹å‡ºå‘é€’å½’åœ°æ·±åº¦ä¼˜å…ˆéå†å›¾Gã€‚ç®—æ³•7.5 */
 	VertexType w1, v1;
 	int w;
-	visited[v]=TRUE; /* ÉèÖÃ·ÃÎÊ±êÖ¾ÎªTRUE(ÒÑ·ÃÎÊ) */
-	VisitFunc(G.vexs[v]); /* ·ÃÎÊµÚv¸ö¶¥µã */
+	visited[v]=TRUE; /* è®¾ç½®è®¿é—®æ ‡å¿—ä¸ºTRUE(å·²è®¿é—®) */
+	VisitFunc(G.vexs[v]); /* è®¿é—®ç¬¬vä¸ªé¡¶ç‚¹ */
 	w=FirstAdjVex(G, v1);
 	strcpy(v1, *GetVex(G, v));
 	strcpy(w1, *GetVex(G, w));
@@ -416,49 +416,49 @@ void DFS(MGraph G, int v) { /* ´ÓµÚv¸ö¶¥µã³ö·¢µİ¹éµØÉî¶ÈÓÅÏÈ±éÀúÍ¼G¡£Ëã·¨7.5 */
 		strcpy(w1, *GetVex(G, w));
 		if (!visited[w])
 			DFS(G, w);
-	}/* ¶ÔvµÄÉĞÎ´·ÃÎÊµÄĞòºÅÎªwµÄÁÚ½Ó¶¥µãµİ¹éµ÷ÓÃDFS */
+	}/* å¯¹vçš„å°šæœªè®¿é—®çš„åºå·ä¸ºwçš„é‚»æ¥é¡¶ç‚¹é€’å½’è°ƒç”¨DFS */
 }
 
-void DFSTraverse(MGraph G, Status (*Visit)(VertexType)) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,VisitÊÇ¶¥µãµÄÓ¦ÓÃº¯Êı¡£Ëã·¨7.4 */
-	/* ²Ù×÷½á¹û: ´ÓµÚ1¸ö¶¥µãÆğ,Éî¶ÈÓÅÏÈ±éÀúÍ¼G,²¢¶ÔÃ¿¸ö¶¥µãµ÷ÓÃº¯ÊıVisit */
-	/*           Ò»´ÎÇÒ½öÒ»´Î¡£Ò»µ©Visit()Ê§°Ü,Ôò²Ù×÷Ê§°Ü */
+void DFSTraverse(MGraph G, Status (*Visit)(VertexType)) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,Visitæ˜¯é¡¶ç‚¹çš„åº”ç”¨å‡½æ•°ã€‚ç®—æ³•7.4 */
+	/* æ“ä½œç»“æœ: ä»ç¬¬1ä¸ªé¡¶ç‚¹èµ·,æ·±åº¦ä¼˜å…ˆéå†å›¾G,å¹¶å¯¹æ¯ä¸ªé¡¶ç‚¹è°ƒç”¨å‡½æ•°Visit */
+	/*           ä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ã€‚ä¸€æ—¦Visit()å¤±è´¥,åˆ™æ“ä½œå¤±è´¥ */
 	int v;
-	VisitFunc=Visit; /* Ê¹ÓÃÈ«¾Ö±äÁ¿VisitFunc,Ê¹DFS²»±ØÉèº¯ÊıÖ¸Õë²ÎÊı */
+	VisitFunc=Visit; /* ä½¿ç”¨å…¨å±€å˜é‡VisitFunc,ä½¿DFSä¸å¿…è®¾å‡½æ•°æŒ‡é’ˆå‚æ•° */
 	for (v=0; v<G.vexnum; v++)
-		visited[v]=FALSE; /* ·ÃÎÊ±êÖ¾Êı×é³õÊ¼»¯(Î´±»·ÃÎÊ) */
+		visited[v]=FALSE; /* è®¿é—®æ ‡å¿—æ•°ç»„åˆå§‹åŒ–(æœªè¢«è®¿é—®) */
 	for (v=0; v<G.vexnum; v++) {
 		//printf("%d\n",visited[v]);
 		if (!visited[v]) {
-			DFS(G, v); /* ¶ÔÉĞÎ´·ÃÎÊµÄ¶¥µãµ÷ÓÃDFS */
+			DFS(G, v); /* å¯¹å°šæœªè®¿é—®çš„é¡¶ç‚¹è°ƒç”¨DFS */
 		}
 	}
 }
 
-typedef VRType QElemType; /* ¶ÓÁĞÀàĞÍ */
-#include "LinkQueue.h" /* BFSTraverse()ÓÃ */
-void BFSTraverse(MGraph G, Status(*Visit)(VertexType)) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,VisitÊÇ¶¥µãµÄÓ¦ÓÃº¯Êı¡£Ëã·¨7.6 */
-	/* ²Ù×÷½á¹û: ´ÓµÚ1¸ö¶¥µãÆğ,°´¹ã¶ÈÓÅÏÈ·Çµİ¹é±éÀúÍ¼G,²¢¶ÔÃ¿¸ö¶¥µãµ÷ÓÃº¯Êı */
-	/*           VisitÒ»´ÎÇÒ½öÒ»´Î¡£Ò»µ©Visit()Ê§°Ü,Ôò²Ù×÷Ê§°Ü¡£ */
-	/*           Ê¹ÓÃ¸¨Öú¶ÓÁĞQºÍ·ÃÎÊ±êÖ¾Êı×évisited */
+typedef VRType QElemType; /* é˜Ÿåˆ—ç±»å‹ */
+#include "LinkQueue.h" /* BFSTraverse()ç”¨ */
+void BFSTraverse(MGraph G, Status(*Visit)(VertexType)) { /* åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,Visitæ˜¯é¡¶ç‚¹çš„åº”ç”¨å‡½æ•°ã€‚ç®—æ³•7.6 */
+	/* æ“ä½œç»“æœ: ä»ç¬¬1ä¸ªé¡¶ç‚¹èµ·,æŒ‰å¹¿åº¦ä¼˜å…ˆéé€’å½’éå†å›¾G,å¹¶å¯¹æ¯ä¸ªé¡¶ç‚¹è°ƒç”¨å‡½æ•° */
+	/*           Visitä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ã€‚ä¸€æ—¦Visit()å¤±è´¥,åˆ™æ“ä½œå¤±è´¥ã€‚ */
+	/*           ä½¿ç”¨è¾…åŠ©é˜Ÿåˆ—Qå’Œè®¿é—®æ ‡å¿—æ•°ç»„visited */
 	int v, u, w;
 	VertexType w1, u1;
 	LinkQueue Q;
 	for (v=0; v<G.vexnum; v++)
-		visited[v]=FALSE; /* ÖÃ³õÖµ */
-	InitQueue(&Q); /* ÖÃ¿ÕµÄ¸¨Öú¶ÓÁĞQ */
+		visited[v]=FALSE; /* ç½®åˆå€¼ */
+	InitQueue(&Q); /* ç½®ç©ºçš„è¾…åŠ©é˜Ÿåˆ—Q */
 	for (v=0; v<G.vexnum; v++)
-		if (!visited[v]) /* vÉĞÎ´·ÃÎÊ */
+		if (!visited[v]) /* vå°šæœªè®¿é—® */
 		{
-			visited[v]=TRUE; /* ÉèÖÃ·ÃÎÊ±êÖ¾ÎªTRUE(ÒÑ·ÃÎÊ) */
+			visited[v]=TRUE; /* è®¾ç½®è®¿é—®æ ‡å¿—ä¸ºTRUE(å·²è®¿é—®) */
 			Visit(G.vexs[v]);
-			EnQueue(&Q, v); /* vÈë¶ÓÁĞ */
-			while (!QueueEmpty(Q)) /* ¶ÓÁĞ²»¿Õ */
+			EnQueue(&Q, v); /* vå…¥é˜Ÿåˆ— */
+			while (!QueueEmpty(Q)) /* é˜Ÿåˆ—ä¸ç©º */
 			{
-				DeQueue(&Q, &u); /* ¶ÓÍ·ÔªËØ³ö¶Ó²¢ÖÃÎªu */
+				DeQueue(&Q, &u); /* é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿå¹¶ç½®ä¸ºu */
 				strcpy(u1, *GetVex(G, u));
 				for (w=FirstAdjVex(G, u1); w>=0; w=NextAdjVex(G, u1, strcpy(w1,
 						*GetVex(G, w))))
-					if (!visited[w]) /* wÎªuµÄÉĞÎ´·ÃÎÊµÄÁÚ½Ó¶¥µãµÄĞòºÅ */
+					if (!visited[w]) /* wä¸ºuçš„å°šæœªè®¿é—®çš„é‚»æ¥é¡¶ç‚¹çš„åºå· */
 					{
 						visited[w]=TRUE;
 						Visit(G.vexs[w]);
@@ -469,47 +469,47 @@ void BFSTraverse(MGraph G, Status(*Visit)(VertexType)) { /* ³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,Vi
 	printf("\n");
 }
 
-/* Êä³öÁÚ½Ó¾ØÕóG */
+/* è¾“å‡ºé‚»æ¥çŸ©é˜µG */
 void Display(MGraph G) {
 	int i, j;
 	char s[7], s1[3];
 	switch (G.kind) {
 	case DG:
-		strcpy(s, "ÓĞÏòÍ¼\0");
-		strcpy(s1, "»¡\0");
+		strcpy(s, "æœ‰å‘å›¾\0");
+		strcpy(s1, "å¼§\0");
 		break;
 	case DN:
-		strcpy(s, "ÓĞÏòÍø\0");
-		strcpy(s1, "»¡\0");
+		strcpy(s, "æœ‰å‘ç½‘\0");
+		strcpy(s1, "å¼§\0");
 		break;
 	case UDG:
-		strcpy(s, "ÎŞÏòÍ¼\0");
-		strcpy(s1, "±ß\0");
+		strcpy(s, "æ— å‘å›¾\0");
+		strcpy(s1, "è¾¹\0");
 		break;
 	case UDN:
-		strcpy(s, "ÎŞÏòÍø\0");
-		strcpy(s1, "±ß\0");
+		strcpy(s, "æ— å‘ç½‘\0");
+		strcpy(s1, "è¾¹\0");
 	}
-	printf("%d¸ö¶¥µã%dÌõ%sµÄ%s\n", G.vexnum, G.arcnum, s1, s);
+	printf("%dä¸ªé¡¶ç‚¹%dæ¡%sçš„%s\n", G.vexnum, G.arcnum, s1, s);
 	for (i=0; i<G.vexnum; ++i)
-		/* Êä³öG.vexs */
+		/* è¾“å‡ºG.vexs */
 		printf("G.vexs[%d]=%s\n", i, G.vexs[i]);
-	printf("G.arcs.adj:\n"); /* Êä³öG.arcs.adj */
+	printf("G.arcs.adj:\n"); /* è¾“å‡ºG.arcs.adj */
 	for (i=0; i<G.vexnum; i++) {
 		for (j=0; j<G.vexnum; j++)
 			printf("%6d", G.arcs[i][j].adj);
 		printf("\n");
 	}
-	printf("G.arcs.info:\n"); /* Êä³öG.arcs.info */
-	printf("¶¥µã1(»¡Î²) ¶¥µã2(»¡Í·) ¸Ã%sĞÅÏ¢£º\n", s1);
-	if (G.kind<2) /* ÓĞÏò */
+	printf("G.arcs.info:\n"); /* è¾“å‡ºG.arcs.info */
+	printf("é¡¶ç‚¹1(å¼§å°¾) é¡¶ç‚¹2(å¼§å¤´) è¯¥%sä¿¡æ¯ï¼š\n", s1);
+	if (G.kind<2) /* æœ‰å‘ */
 		for (i=0; i<G.vexnum; i++)
 			for (j=0; j<G.vexnum; j++) {
 				if (G.arcs[i][j].info)
 					printf("%5s %11s     %s\n", G.vexs[i], G.vexs[j],
 							G.arcs[i][j].info);
 			}
-	else /* ÎŞÏò */
+	else /* æ— å‘ */
 	{
 		for (i=0; i<G.vexnum; i++)
 			for (j=i+1; j<G.vexnum; j++)

@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include "MGraph.h"
 
 Status visit(VertexType i) {
@@ -10,15 +10,15 @@ int main() {
 	MGraph G;
 	CreateGraph(&G);
 	Display(G);
-	printf("--------Í¨¹ı½áµã½áµãÖµ²éÕÒĞòºÅ------\n");
+	printf("--------é€šè¿‡ç»“ç‚¹ç»“ç‚¹å€¼æŸ¥æ‰¾åºå·------\n");
 	int l;
 	l= LocateVex(G,"B");
 	printf("%d\n", l);
-	printf("--------Í¨¹ıĞòºÅ²éÕÒ½áµãµÄÖµ------\n");
+	printf("--------é€šè¿‡åºå·æŸ¥æ‰¾ç»“ç‚¹çš„å€¼------\n");
 	VertexType a;
 	strcpy(a, *GetVex(G, 2));
 	printf("%s\n", a);
-	printf("\n--------Éî¶ÈÓÅÏÈ±éÀú¿ªÊ¼------\n");
+	printf("\n--------æ·±åº¦ä¼˜å…ˆéå†å¼€å§‹------\n");
 	DFSTraverse(G, visit);
 	system("pause");
 	return 0;

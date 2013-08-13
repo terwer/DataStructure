@@ -1,4 +1,4 @@
-/* µ¥Á´¶ÓÁÐ£­£­¶ÓÁÐµÄÁ´Ê½´æ´¢½á¹¹ */
+ï»¿/* å•é“¾é˜Ÿåˆ—ï¼ï¼é˜Ÿåˆ—çš„é“¾å¼å­˜å‚¨ç»“æž„ */
 #define OK 1
 #define ERROR 0
 #define OVERFLOW 2
@@ -11,12 +11,12 @@ typedef struct QNode {
 } QNode, *QueuePtr;
 
 typedef struct {
-	QueuePtr front, rear; /* ¶ÓÍ·¡¢¶ÓÎ²Ö¸Õë */
+	QueuePtr front, rear; /* é˜Ÿå¤´ã€é˜Ÿå°¾æŒ‡é’ˆ */
 } LinkQueue;
 
-/*Á´¶ÓÁÐµÄ»ù±¾²Ù×÷(9¸ö) */
+/*é“¾é˜Ÿåˆ—çš„åŸºæœ¬æ“ä½œ(9ä¸ª) */
 Status InitQueue(LinkQueue *Q)
-{ /* ¹¹ÔìÒ»¸ö¿Õ¶ÓÁÐQ */
+{ /* æž„é€ ä¸€ä¸ªç©ºé˜Ÿåˆ—Q */
   (*Q).front=(*Q).rear=(QueuePtr)malloc(sizeof(QNode));
   if(!(*Q).front)
     exit(OVERFLOW);
@@ -25,7 +25,7 @@ Status InitQueue(LinkQueue *Q)
 }
 
 Status DestroyQueue(LinkQueue *Q)
-{ /* Ïú»Ù¶ÓÁÐQ(ÎÞÂÛ¿Õ·ñ¾ù¿É) */
+{ /* é”€æ¯é˜Ÿåˆ—Q(æ— è®ºç©ºå¦å‡å¯) */
   while((*Q).front)
   {
     (*Q).rear=(*Q).front->next;
@@ -36,7 +36,7 @@ Status DestroyQueue(LinkQueue *Q)
 }
 
 Status ClearQueue(LinkQueue *Q)
-{ /* ½«QÇåÎª¿Õ¶ÓÁÐ */
+{ /* å°†Qæ¸…ä¸ºç©ºé˜Ÿåˆ— */
   QueuePtr p,q;
   (*Q).rear=(*Q).front;
   p=(*Q).front->next;
@@ -51,7 +51,7 @@ Status ClearQueue(LinkQueue *Q)
 }
 
 Status QueueEmpty(LinkQueue Q)
-{ /* ÈôQÎª¿Õ¶ÓÁÐ,Ôò·µ»ØTRUE,·ñÔò·µ»ØFALSE */
+{ /* è‹¥Qä¸ºç©ºé˜Ÿåˆ—,åˆ™è¿”å›žTRUE,å¦åˆ™è¿”å›žFALSE */
   if(Q.front==Q.rear)
     return TRUE;
   else
@@ -59,7 +59,7 @@ Status QueueEmpty(LinkQueue Q)
 }
 
 int QueueLength(LinkQueue Q)
-{ /* Çó¶ÓÁÐµÄ³¤¶È */
+{ /* æ±‚é˜Ÿåˆ—çš„é•¿åº¦ */
   int i=0;
   QueuePtr p;
   p=Q.front;
@@ -71,8 +71,8 @@ int QueueLength(LinkQueue Q)
   return i;
 }
 
-Status GetHead_Q(LinkQueue Q,QElemType *e) /* ±ÜÃâÓëbo2-6.cÖØÃû */
-{ /* Èô¶ÓÁÐ²»¿Õ,ÔòÓÃe·µ»ØQµÄ¶ÓÍ·ÔªËØ,²¢·µ»ØOK,·ñÔò·µ»ØERROR */
+Status GetHead_Q(LinkQueue Q,QElemType *e) /* é¿å…ä¸Žbo2-6.cé‡å */
+{ /* è‹¥é˜Ÿåˆ—ä¸ç©º,åˆ™ç”¨eè¿”å›žQçš„é˜Ÿå¤´å…ƒç´ ,å¹¶è¿”å›žOK,å¦åˆ™è¿”å›žERROR */
   QueuePtr p;
   if(Q.front==Q.rear)
     return ERROR;
@@ -82,9 +82,9 @@ Status GetHead_Q(LinkQueue Q,QElemType *e) /* ±ÜÃâÓëbo2-6.cÖØÃû */
 }
 
 Status EnQueue(LinkQueue *Q,QElemType e)
-{ /* ²åÈëÔªËØeÎªQµÄÐÂµÄ¶ÓÎ²ÔªËØ */
+{ /* æ’å…¥å…ƒç´ eä¸ºQçš„æ–°çš„é˜Ÿå°¾å…ƒç´  */
   QueuePtr p=(QueuePtr)malloc(sizeof(QNode));
-  if(!p) /* ´æ´¢·ÖÅäÊ§°Ü */
+  if(!p) /* å­˜å‚¨åˆ†é…å¤±è´¥ */
     exit(OVERFLOW);
   p->data=e;
   p->next=NULL;
@@ -94,7 +94,7 @@ Status EnQueue(LinkQueue *Q,QElemType e)
 }
 
 Status DeQueue(LinkQueue *Q,QElemType *e)
-{ /* Èô¶ÓÁÐ²»¿Õ,É¾³ýQµÄ¶ÓÍ·ÔªËØ,ÓÃe·µ»ØÆäÖµ,²¢·µ»ØOK,·ñÔò·µ»ØERROR */
+{ /* è‹¥é˜Ÿåˆ—ä¸ç©º,åˆ é™¤Qçš„é˜Ÿå¤´å…ƒç´ ,ç”¨eè¿”å›žå…¶å€¼,å¹¶è¿”å›žOK,å¦åˆ™è¿”å›žERROR */
   QueuePtr p;
   if((*Q).front==(*Q).rear)
     return ERROR;
@@ -108,7 +108,7 @@ Status DeQueue(LinkQueue *Q,QElemType *e)
 }
 
 Status QueueTraverse(LinkQueue Q,void(*vi)(QElemType))
-{ /* ´Ó¶ÓÍ·µ½¶ÓÎ²ÒÀ´Î¶Ô¶ÓÁÐQÖÐÃ¿¸öÔªËØµ÷ÓÃº¯Êývi()¡£Ò»µ©viÊ§°Ü,Ôò²Ù×÷Ê§°Ü */
+{ /* ä»Žé˜Ÿå¤´åˆ°é˜Ÿå°¾ä¾æ¬¡å¯¹é˜Ÿåˆ—Qä¸­æ¯ä¸ªå…ƒç´ è°ƒç”¨å‡½æ•°vi()ã€‚ä¸€æ—¦viå¤±è´¥,åˆ™æ“ä½œå¤±è´¥ */
   QueuePtr p;
   p=Q.front->next;
   while(p)
