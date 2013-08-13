@@ -1,9 +1,9 @@
+ï»¿/************************************************************************/
+/*å›¾çš„é‚»æ¥è¡¨å­˜å‚¨è¡¨ç¤º                                                     */
 /************************************************************************/
-/*Í¼µÄÁÚ½Ó±í´æ´¢±íÊ¾                                                     */
-/************************************************************************/
-#define MAX_NAME 3 //¶¥µã×Ö·û´®µÄ×î´ó³¤¶È+1 
-typedef int InfoType; //´æ·ÅÍøµÄÈ¨Öµ
-typedef char VertexType[MAX_NAME]; //×Ö·û´®ÀàĞÍ
+#define MAX_NAME 3 //é¡¶ç‚¹å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦+1 
+typedef int InfoType; //å­˜æ”¾ç½‘çš„æƒå€¼
+typedef char VertexType[MAX_NAME]; //å­—ç¬¦ä¸²ç±»å‹
 #define MAX_VERTEX_NUM 20
 #define  OK 1
 #define  FALSE 0
@@ -12,30 +12,30 @@ typedef int Status;
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef enum{DG,DN,UDG,UDN}GraphKind; //{ÓĞÏòÍ¼,ÓĞÏòÍø,ÎŞÏòÍ¼,ÎŞÏòÍø}
+typedef enum{DG,DN,UDG,UDN}GraphKind; //{æœ‰å‘å›¾,æœ‰å‘ç½‘,æ— å‘å›¾,æ— å‘ç½‘}
 typedef struct ArcNode{
-	int adjvex; //¸Ã»¡ËùÖ¸ÏòµÄ¶¥µãµÄÎ»ÖÃ
-	struct ArcNode *nextarc; //Ö¸ÏòÏÂÒ»Ìõ»¡µÄÖ¸Õë
-	InfoType *info; //ÍøµÄÈ¨ÖµÖ¸Õë£© 
-}ArcNode; //±í½áµã
+	int adjvex; //è¯¥å¼§æ‰€æŒ‡å‘çš„é¡¶ç‚¹çš„ä½ç½®
+	struct ArcNode *nextarc; //æŒ‡å‘ä¸‹ä¸€æ¡å¼§çš„æŒ‡é’ˆ
+	InfoType *info; //ç½‘çš„æƒå€¼æŒ‡é’ˆï¼‰ 
+}ArcNode; //è¡¨ç»“ç‚¹
 
 typedef struct{
-	VertexType data; //¶¥µãĞÅÏ¢
-	ArcNode *firstarc; //µÚÒ»¸ö±í½áµãµÄµØÖ·,Ö¸ÏòµÚÒ»ÌõÒÀ¸½¸Ã¶¥µãµÄ»¡µÄÖ¸Õë
-}VNode,AdjList[MAX_VERTEX_NUM]; // Í·½áµã
+	VertexType data; //é¡¶ç‚¹ä¿¡æ¯
+	ArcNode *firstarc; //ç¬¬ä¸€ä¸ªè¡¨ç»“ç‚¹çš„åœ°å€,æŒ‡å‘ç¬¬ä¸€æ¡ä¾é™„è¯¥é¡¶ç‚¹çš„å¼§çš„æŒ‡é’ˆ
+}VNode,AdjList[MAX_VERTEX_NUM]; // å¤´ç»“ç‚¹
 
 typedef struct{
 	AdjList vertices;
-	int vexnum,arcnum; //Í¼µÄµ±Ç°¶¥µãÊıºÍ»¡Êı 
-	int kind; //Í¼µÄÖÖÀà±êÖ¾
+	int vexnum,arcnum; //å›¾çš„å½“å‰é¡¶ç‚¹æ•°å’Œå¼§æ•° 
+	int kind; //å›¾çš„ç§ç±»æ ‡å¿—
 }ALGraph;
 
 /************************************************************************/
-/*Í¼µÄÁÚ½Ó±í´æ´¢µÄ»ù±¾²Ù×÷(15¸ö)                                          */
+/*å›¾çš„é‚»æ¥è¡¨å­˜å‚¨çš„åŸºæœ¬æ“ä½œ(15ä¸ª)                                          */
 /************************************************************************/ 
 
-//³õÊ¼Ìõ¼ş: Í¼G´æÔÚ,uºÍGÖĞ¶¥µãÓĞÏàÍ¬ÌØÕ÷
-//²Ù×÷½á¹û: ÈôGÖĞ´æÔÚ¶¥µãu,Ôò·µ»Ø¸Ã¶¥µãÔÚÍ¼ÖĞÎ»ÖÃ;·ñÔò·µ»Ø-1 
+//åˆå§‹æ¡ä»¶: å›¾Gå­˜åœ¨,uå’ŒGä¸­é¡¶ç‚¹æœ‰ç›¸åŒç‰¹å¾
+//æ“ä½œç»“æœ: è‹¥Gä¸­å­˜åœ¨é¡¶ç‚¹u,åˆ™è¿”å›è¯¥é¡¶ç‚¹åœ¨å›¾ä¸­ä½ç½®;å¦åˆ™è¿”å›-1 
 int LocateVex(ALGraph G,VertexType u){
 	int i;
 	for(i=0;i<G.vexnum;++i)
@@ -44,94 +44,94 @@ int LocateVex(ALGraph G,VertexType u){
 	return -1;
 }
 
-//²ÉÓÃÁÚ½Ó±í´æ´¢½á¹¹,¹¹ÔìÃ»ÓĞÏà¹ØĞÅÏ¢µÄÍ¼G(ÓÃÒ»¸öº¯Êı¹¹Ôì4ÖÖÍ¼) 
+//é‡‡ç”¨é‚»æ¥è¡¨å­˜å‚¨ç»“æ„,æ„é€ æ²¡æœ‰ç›¸å…³ä¿¡æ¯çš„å›¾G(ç”¨ä¸€ä¸ªå‡½æ•°æ„é€ 4ç§å›¾) 
 Status CreateGraph(ALGraph *G){ 
 	int i,j,k;
-	int w; //È¨Öµ 
+	int w; //æƒå€¼ 
 	VertexType va,vb;
 	ArcNode *p;
-	printf("ÇëÊäÈëÍ¼µÄÀàĞÍ:\n0:ÓĞÏòÍ¼\n1:ÓĞÏòÍø\n2:ÎŞÏòÍ¼\n3:ÎŞÏòÍø\n");
+	printf("è¯·è¾“å…¥å›¾çš„ç±»å‹:\n0:æœ‰å‘å›¾\n1:æœ‰å‘ç½‘\n2:æ— å‘å›¾\n3:æ— å‘ç½‘\n");
 	scanf("%d",&(*G).kind);
-	printf("ÇëÊäÈëÍ¼µÄ¶¥µãÊı,±ßÊı: ");
+	printf("è¯·è¾“å…¥å›¾çš„é¡¶ç‚¹æ•°,è¾¹æ•°: ");
 	scanf("%d%d",&(*G).vexnum,&(*G).arcnum);
-	//¹¹Ôì¶¥µãÏòÁ¿
+	//æ„é€ é¡¶ç‚¹å‘é‡
 	for(i=0;i<(*G).vexnum;++i) {
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÖµ(<%d¸ö×Ö·û):\n",i+1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„å€¼(<%dä¸ªå­—ç¬¦):\n",i+1);
 		scanf("%s",(*G).vertices[i].data);
 		(*G).vertices[i].firstarc=NULL;
 	}
-	if((*G).kind==1||(*G).kind==3) //Íø
-		printf("ÇëË³ĞòÊäÈëÃ¿Ìõ»¡(±ß)µÄÈ¨Öµ¡¢»¡Î²ºÍ»¡Í·(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô):\n");
-	else //Í¼
-		printf("ÇëË³ĞòÊäÈëÃ¿Ìõ»¡(±ß)µÄ»¡Î²ºÍ»¡Í·(ÒÔ¿Õ¸ñ×÷Îª¼ä¸ô):\n");
-	//¹¹Ôì±í½áµãÁ´±í
+	if((*G).kind==1||(*G).kind==3) //ç½‘
+		printf("è¯·é¡ºåºè¾“å…¥æ¯æ¡å¼§(è¾¹)çš„æƒå€¼ã€å¼§å°¾å’Œå¼§å¤´(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”):\n");
+	else //å›¾
+		printf("è¯·é¡ºåºè¾“å…¥æ¯æ¡å¼§(è¾¹)çš„å¼§å°¾å’Œå¼§å¤´(ä»¥ç©ºæ ¼ä½œä¸ºé—´éš”):\n");
+	//æ„é€ è¡¨ç»“ç‚¹é“¾è¡¨
 	for(k=0;k<(*G).arcnum;++k) {
-		if((*G).kind==1||(*G).kind==3) //Íø
+		if((*G).kind==1||(*G).kind==3) //ç½‘
 			scanf("%d%s%s",&w,va,vb);
-		else //Í¼
+		else //å›¾
 			scanf("%s%s",va,vb);
-		i=LocateVex(*G,va); //»¡Î²
-		j=LocateVex(*G,vb); //»¡Í·
+		i=LocateVex(*G,va); //å¼§å°¾
+		j=LocateVex(*G,vb); //å¼§å¤´
 		p=(ArcNode*)malloc(sizeof(ArcNode));
 		p->adjvex=j;
-		//Íø 
+		//ç½‘ 
 		if((*G).kind==1||(*G).kind==3){
 			p->info=(int *)malloc(sizeof(int));
 			*(p->info)=w;
 		}
 		else
-			p->info=NULL; //Í¼
-		p->nextarc=(*G).vertices[i].firstarc; //²åÔÚ±íÍ·
+			p->info=NULL; //å›¾
+		p->nextarc=(*G).vertices[i].firstarc; //æ’åœ¨è¡¨å¤´
 		(*G).vertices[i].firstarc=p;
-		//ÎŞÏòÍ¼»òÍø,²úÉúµÚ¶ş¸ö±í½áµã *
+		//æ— å‘å›¾æˆ–ç½‘,äº§ç”Ÿç¬¬äºŒä¸ªè¡¨ç»“ç‚¹ *
 		if((*G).kind>=2){
 			p=(ArcNode*)malloc(sizeof(ArcNode));
 			p->adjvex=i;
-			//ÎŞÏòÍø
+			//æ— å‘ç½‘
 			if((*G).kind==3) {
 				p->info=(int*)malloc(sizeof(int));
 				*(p->info)=w;
 			}
 			else
-				p->info=NULL; //ÎŞÏòÍ¼
-			p->nextarc=(*G).vertices[j].firstarc; //²åÔÚ±íÍ·
+				p->info=NULL; //æ— å‘å›¾
+			p->nextarc=(*G).vertices[j].firstarc; //æ’åœ¨è¡¨å¤´
 			(*G).vertices[j].firstarc=p;
 		}
 	}
 	return OK;
 }
 
-//Êä³öÍ¼µÄÁÚ½Ó±í
+//è¾“å‡ºå›¾çš„é‚»æ¥è¡¨
 void Display(ALGraph G){
 	int i;
 	ArcNode *p;
 	switch(G.kind){
-	case DG: printf("ÓĞÏòÍ¼\n");
+	case DG: printf("æœ‰å‘å›¾\n");
 		break;
-	case DN: printf("ÓĞÏòÍø\n");
+	case DN: printf("æœ‰å‘ç½‘\n");
 		break;
-	case UDG: printf("ÎŞÏòÍ¼\n");
+	case UDG: printf("æ— å‘å›¾\n");
 		break;
-	case UDN: printf("ÎŞÏòÍø\n");
+	case UDN: printf("æ— å‘ç½‘\n");
 	}
-	printf("%d¸ö¶¥µã£º\n",G.vexnum);
+	printf("%dä¸ªé¡¶ç‚¹ï¼š\n",G.vexnum);
 	for(i=0;i<G.vexnum;++i)
 		printf("%s ",G.vertices[i].data);
-	printf("\n%dÌõ»¡(±ß):\n",G.arcnum);
+	printf("\n%dæ¡å¼§(è¾¹):\n",G.arcnum);
 	for(i=0;i<G.vexnum;i++){
 		p=G.vertices[i].firstarc;
 		while(p){
-			//ÓĞÏò
+			//æœ‰å‘
 			if(G.kind<=1) {
-				printf("%s¡ú%s ",G.vertices[i].data,G.vertices[p->adjvex].data);
-				if(G.kind==DN) //Íø
+				printf("%sâ†’%s ",G.vertices[i].data,G.vertices[p->adjvex].data);
+				if(G.kind==DN) //ç½‘
 					printf(":%d ",*(p->info));
 			}
-			//ÎŞÏò(±ÜÃâÊä³öÁ½´Î) 
+			//æ— å‘(é¿å…è¾“å‡ºä¸¤æ¬¡) 
 			else {
 				if(i<p->adjvex){
-					printf("%s£­%s ",G.vertices[i].data,G.vertices[p->adjvex].data);
-					if(G.kind==UDN) //Íø
+					printf("%sï¼%s ",G.vertices[i].data,G.vertices[p->adjvex].data);
+					if(G.kind==UDN) //ç½‘
 						printf(":%d ",*(p->info));
 				}
 			}
