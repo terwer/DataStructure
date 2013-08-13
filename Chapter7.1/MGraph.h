@@ -446,6 +446,7 @@ void DFSTraverse(MGraph G, Status (*Visit)(VertexType)) {
 	printf("\n************************************************************************\n");
 	printf("*深度优先遍历                                                          *\n");
 	printf("************************************************************************\n");
+
 	int v;
 	VisitFunc=Visit; //使用全局变量VisitFunc,使DFS不必设函数指针参数
 	for (v=0; v<G.vexnum; v++)

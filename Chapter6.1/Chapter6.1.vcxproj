@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A2DC24E8-5F1D-4AC8-B53E-FB4D63B047E2}</ProjectGuid>
+    <ProjectGuid>{14417587-1CDE-41D7-9D38-C4309249DC95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Chapter71</RootNamespace>
+    <RootNamespace>Chapter61</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,9 +74,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="algorithm.h" />
-    <ClInclude Include="LinkQueue.h" />
-    <ClInclude Include="MGraph.h" />
+    <ClInclude Include="SqBiTree.h" />
+    <ClInclude Include="SqQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
