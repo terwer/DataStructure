@@ -1,4 +1,6 @@
-﻿/* 单链队列－－队列的链式存储结构 */
+﻿/************************************************************************/
+/*单链队列－－队列的链式存储结构                                          */
+/************************************************************************/
 #define OK 1
 #define ERROR 0
 #define OVERFLOW 2
@@ -11,12 +13,15 @@ typedef struct QNode {
 } QNode, *QueuePtr;
 
 typedef struct {
-	QueuePtr front, rear; /* 队头、队尾指针 */
+	QueuePtr front, rear; //队头、队尾指针
 } LinkQueue;
 
-/*链队列的基本操作(9个) */
-Status InitQueue(LinkQueue *Q)
-{ /* 构造一个空队列Q */
+/************************************************************************/
+/* 链队列的基本操作(9个)                                                 */
+/************************************************************************/ 
+
+//构造一个空队列Q
+Status InitQueue(LinkQueue *Q){ 
   (*Q).front=(*Q).rear=(QueuePtr)malloc(sizeof(QNode));
   if(!(*Q).front)
     exit(OVERFLOW);
@@ -24,10 +29,9 @@ Status InitQueue(LinkQueue *Q)
   return OK;
 }
 
-Status DestroyQueue(LinkQueue *Q)
-{ /* 销毁队列Q(无论空否均可) */
-  while((*Q).front)
-  {
+//销毁队列Q(无论空否均可) 
+Status DestroyQueue(LinkQueue *Q){
+  while((*Q).front){
     (*Q).rear=(*Q).front->next;
     free((*Q).front);
     (*Q).front=(*Q).rear;
@@ -35,14 +39,13 @@ Status DestroyQueue(LinkQueue *Q)
   return OK;
 }
 
-Status ClearQueue(LinkQueue *Q)
-{ /* 将Q清为空队列 */
+//将Q清为空队列
+Status ClearQueue(LinkQueue *Q){
   QueuePtr p,q;
   (*Q).rear=(*Q).front;
   p=(*Q).front->next;
   (*Q).front->next=NULL;
-  while(p)
-  {
+  while(p){
     q=p;
     p=p->next;
     free(q);
@@ -50,29 +53,29 @@ Status ClearQueue(LinkQueue *Q)
   return OK;
 }
 
-Status QueueEmpty(LinkQueue Q)
-{ /* 若Q为空队列,则返回TRUE,否则返回FALSE */
+//若Q为空队列,则返回TRUE,否则返回FALSE
+Status QueueEmpty(LinkQueue Q){
   if(Q.front==Q.rear)
     return TRUE;
   else
     return FALSE;
 }
 
-int QueueLength(LinkQueue Q)
-{ /* 求队列的长度 */
+//求队列的长度
+int QueueLength(LinkQueue Q){ 
   int i=0;
   QueuePtr p;
   p=Q.front;
-  while(Q.rear!=p)
-  {
+  while(Q.rear!=p) {
     i++;
     p=p->next;
   }
   return i;
 }
 
-Status GetHead_Q(LinkQueue Q,QElemType *e) /* 避免与bo2-6.c重名 */
-{ /* 若队列不空,则用e返回Q的队头元素,并返回OK,否则返回ERROR */
+//若队列不空,则用e返回Q的队头元素,并返回OK,否则返回ERROR
+//避免与bo2-6.c重名
+Status GetHead_Q(LinkQueue Q,QElemType *e) { 
   QueuePtr p;
   if(Q.front==Q.rear)
     return ERROR;
@@ -81,10 +84,11 @@ Status GetHead_Q(LinkQueue Q,QElemType *e) /* 避免与bo2-6.c重名 */
   return OK;
 }
 
+//插入元素e为Q的新的队尾元素
 Status EnQueue(LinkQueue *Q,QElemType e)
-{ /* 插入元素e为Q的新的队尾元素 */
+{ 
   QueuePtr p=(QueuePtr)malloc(sizeof(QNode));
-  if(!p) /* 存储分配失败 */
+  if(!p) //存储分配失败
     exit(OVERFLOW);
   p->data=e;
   p->next=NULL;
@@ -93,8 +97,9 @@ Status EnQueue(LinkQueue *Q,QElemType e)
   return OK;
 }
 
+//若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回ERROR
 Status DeQueue(LinkQueue *Q,QElemType *e)
-{ /* 若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回ERROR */
+{ 
   QueuePtr p;
   if((*Q).front==(*Q).rear)
     return ERROR;
@@ -107,12 +112,11 @@ Status DeQueue(LinkQueue *Q,QElemType *e)
   return OK;
 }
 
-Status QueueTraverse(LinkQueue Q,void(*vi)(QElemType))
-{ /* 从队头到队尾依次对队列Q中每个元素调用函数vi()。一旦vi失败,则操作失败 */
+//从队头到队尾依次对队列Q中每个元素调用函数vi()。一旦vi失败,则操作失败。
+Status QueueTraverse(LinkQueue Q,void(*vi)(QElemType)){
   QueuePtr p;
   p=Q.front->next;
-  while(p)
-  {
+  while(p){
     vi(p->data);
     p=p->next;
   }
