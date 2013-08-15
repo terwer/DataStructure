@@ -6,7 +6,7 @@ Status visit(TElemType e){
 	return OK;
 }
 
-int main(){
+int main(){ 
 	SqBiTree bt;
 	InitBiTree(bt);
 	CreateBiTree(bt);
