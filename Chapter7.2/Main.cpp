@@ -7,6 +7,7 @@ void visit(char *i)
 	printf("%s ",i);
 }
 
+
 int main(){
 	ALGraph G;
 	CreateGraph(&G);

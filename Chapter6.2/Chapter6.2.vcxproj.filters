@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SqBiTree.h">
+    <ClInclude Include="BiTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SqQueue.h">
+    <ClInclude Include="LinkQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SqStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{14417587-1CDE-41D7-9D38-C4309249DC95}</ProjectGuid>
+    <ProjectGuid>{48035DA7-561E-4EF9-8BD3-F975B62C0B6D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Chapter61</RootNamespace>
+    <RootNamespace>Chapter64</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,11 +74,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="SqBiTree.h" />
-    <ClInclude Include="SqQueue.h" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClInclude Include="LinkQueue.h" />
+    <ClInclude Include="PTree.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="测试数据.txt" />
