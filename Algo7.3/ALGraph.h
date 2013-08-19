@@ -1,7 +1,9 @@
 ﻿/************************************************************************/
 /*图的邻接表存储表示                                                     */
 /************************************************************************/
+typedef char VertexType[MAX_NAME]; //字符串类型
 #define MAX_VERTEX_NUM 20
+
 typedef enum{DG,DN,UDG,UDN}GraphKind; //{有向图,有向网,无向图,无向网}
 typedef struct ArcNode{
 	int adjvex; //该弧所指向的顶点的位置
@@ -440,4 +442,3 @@ void Display(ALGraph G){
 		printf("\n");
 	}
 }
-
