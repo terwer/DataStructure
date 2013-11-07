@@ -10,7 +10,8 @@ typedef char VertexType[MAX_NAME];
 #include "ALGraph.h"
 #include "CSTree.h"
 
-//从第v个顶点出发深度优先遍历图G,建立以T为根的生成树。算法7.8 
+//从第v个顶点出发深度优先遍历图G,建立以T为根的生成树。算法7.8    
+
 void DFSTree(ALGraph G,int v,CSTree *T)
 { 
 	Boolean first=TRUE;
