@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E498D171B5F5104000D6054 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E498D161B5F5104000D6054 /* main.cpp */; };
+		1E498D2A1B5F5CF7000D6054 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E498D291B5F5CF7000D6054 /* main.m */; };
+		1E498D321B5F5D28000D6054 /* Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E498D311B5F5D28000D6054 /* Sort.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1E498D111B5F5104000D6054 /* CopyFiles */ = {
+		1E498D241B5F5CF7000D6054 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +24,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E498D131B5F5104000D6054 /* InsertionSort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InsertionSort; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E498D161B5F5104000D6054 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1E498D261B5F5CF7000D6054 /* InsertionSort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InsertionSort; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E498D291B5F5CF7000D6054 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1E498D301B5F5D28000D6054 /* Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sort.h; sourceTree = "<group>"; };
+		1E498D311B5F5D28000D6054 /* Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sort.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1E498D101B5F5104000D6054 /* Frameworks */ = {
+		1E498D231B5F5CF7000D6054 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,26 +41,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E498D0A1B5F5104000D6054 = {
+		1E498D1D1B5F5CF7000D6054 = {
 			isa = PBXGroup;
 			children = (
-				1E498D151B5F5104000D6054 /* InsertionSort */,
-				1E498D141B5F5104000D6054 /* Products */,
+				1E498D281B5F5CF7000D6054 /* InsertionSort */,
+				1E498D271B5F5CF7000D6054 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1E498D141B5F5104000D6054 /* Products */ = {
+		1E498D271B5F5CF7000D6054 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E498D131B5F5104000D6054 /* InsertionSort */,
+				1E498D261B5F5CF7000D6054 /* InsertionSort */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1E498D151B5F5104000D6054 /* InsertionSort */ = {
+		1E498D281B5F5CF7000D6054 /* InsertionSort */ = {
 			isa = PBXGroup;
 			children = (
-				1E498D161B5F5104000D6054 /* main.cpp */,
+				1E498D291B5F5CF7000D6054 /* main.m */,
+				1E498D301B5F5D28000D6054 /* Sort.h */,
+				1E498D311B5F5D28000D6054 /* Sort.m */,
 			);
 			path = InsertionSort;
 			sourceTree = "<group>";
@@ -65,13 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E498D121B5F5104000D6054 /* InsertionSort */ = {
+		1E498D251B5F5CF7000D6054 /* InsertionSort */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E498D1A1B5F5104000D6054 /* Build configuration list for PBXNativeTarget "InsertionSort" */;
+			buildConfigurationList = 1E498D2D1B5F5CF7000D6054 /* Build configuration list for PBXNativeTarget "InsertionSort" */;
 			buildPhases = (
-				1E498D0F1B5F5104000D6054 /* Sources */,
-				1E498D101B5F5104000D6054 /* Frameworks */,
-				1E498D111B5F5104000D6054 /* CopyFiles */,
+				1E498D221B5F5CF7000D6054 /* Sources */,
+				1E498D231B5F5CF7000D6054 /* Frameworks */,
+				1E498D241B5F5CF7000D6054 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -79,53 +84,54 @@
 			);
 			name = InsertionSort;
 			productName = InsertionSort;
-			productReference = 1E498D131B5F5104000D6054 /* InsertionSort */;
+			productReference = 1E498D261B5F5CF7000D6054 /* InsertionSort */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1E498D0B1B5F5104000D6054 /* Project object */ = {
+		1E498D1E1B5F5CF7000D6054 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = terwer;
 				TargetAttributes = {
-					1E498D121B5F5104000D6054 = {
+					1E498D251B5F5CF7000D6054 = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
 			};
-			buildConfigurationList = 1E498D0E1B5F5104000D6054 /* Build configuration list for PBXProject "InsertionSort" */;
+			buildConfigurationList = 1E498D211B5F5CF7000D6054 /* Build configuration list for PBXProject "InsertionSort" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 1E498D0A1B5F5104000D6054;
-			productRefGroup = 1E498D141B5F5104000D6054 /* Products */;
+			mainGroup = 1E498D1D1B5F5CF7000D6054;
+			productRefGroup = 1E498D271B5F5CF7000D6054 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E498D121B5F5104000D6054 /* InsertionSort */,
+				1E498D251B5F5CF7000D6054 /* InsertionSort */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1E498D0F1B5F5104000D6054 /* Sources */ = {
+		1E498D221B5F5CF7000D6054 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E498D171B5F5104000D6054 /* main.cpp in Sources */,
+				1E498D2A1B5F5CF7000D6054 /* main.m in Sources */,
+				1E498D321B5F5D28000D6054 /* Sort.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1E498D181B5F5104000D6054 /* Debug */ = {
+		1E498D2B1B5F5CF7000D6054 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -167,7 +173,7 @@
 			};
 			name = Debug;
 		};
-		1E498D191B5F5104000D6054 /* Release */ = {
+		1E498D2C1B5F5CF7000D6054 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,14 +208,14 @@
 			};
 			name = Release;
 		};
-		1E498D1B1B5F5104000D6054 /* Debug */ = {
+		1E498D2E1B5F5CF7000D6054 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		1E498D1C1B5F5104000D6054 /* Release */ = {
+		1E498D2F1B5F5CF7000D6054 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -219,24 +225,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E498D0E1B5F5104000D6054 /* Build configuration list for PBXProject "InsertionSort" */ = {
+		1E498D211B5F5CF7000D6054 /* Build configuration list for PBXProject "InsertionSort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E498D181B5F5104000D6054 /* Debug */,
-				1E498D191B5F5104000D6054 /* Release */,
+				1E498D2B1B5F5CF7000D6054 /* Debug */,
+				1E498D2C1B5F5CF7000D6054 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E498D1A1B5F5104000D6054 /* Build configuration list for PBXNativeTarget "InsertionSort" */ = {
+		1E498D2D1B5F5CF7000D6054 /* Build configuration list for PBXNativeTarget "InsertionSort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E498D1B1B5F5104000D6054 /* Debug */,
-				1E498D1C1B5F5104000D6054 /* Release */,
+				1E498D2E1B5F5CF7000D6054 /* Debug */,
+				1E498D2F1B5F5CF7000D6054 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1E498D0B1B5F5104000D6054 /* Project object */;
+	rootObject = 1E498D1E1B5F5CF7000D6054 /* Project object */;
 }

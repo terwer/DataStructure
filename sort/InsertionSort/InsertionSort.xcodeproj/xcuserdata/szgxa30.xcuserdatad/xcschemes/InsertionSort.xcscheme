@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E498D121B5F5104000D6054"
+               BlueprintIdentifier = "1E498D251B5F5CF7000D6054"
                BuildableName = "InsertionSort"
                BlueprintName = "InsertionSort"
                ReferencedContainer = "container:InsertionSort.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D121B5F5104000D6054"
+            BlueprintIdentifier = "1E498D251B5F5CF7000D6054"
             BuildableName = "InsertionSort"
             BlueprintName = "InsertionSort"
             ReferencedContainer = "container:InsertionSort.xcodeproj">
@@ -52,7 +52,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D121B5F5104000D6054"
+            BlueprintIdentifier = "1E498D251B5F5CF7000D6054"
             BuildableName = "InsertionSort"
             BlueprintName = "InsertionSort"
             ReferencedContainer = "container:InsertionSort.xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D121B5F5104000D6054"
+            BlueprintIdentifier = "1E498D251B5F5CF7000D6054"
             BuildableName = "InsertionSort"
             BlueprintName = "InsertionSort"
             ReferencedContainer = "container:InsertionSort.xcodeproj">
