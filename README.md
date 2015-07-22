@@ -1,4 +1,4 @@
 datastructure
 =============
 
-用VS2010写的数据结构的部分实现，包括定义、使用以及测试数据。
+Move to mac and rewrite。
