@@ -9,7 +9,7 @@
 #include "InsertionSort.h"
 
 //根据索引插入纪录到列表
-void InsertList(RecordList *L,Record record,int index)
+void insertRecordByIndex(RecordList *L,Record record,int index)
 {
     printf("正在插入数据%d，其他信息%d\n",record.key,record.otherinfo);
     int i=L->length-1;
@@ -23,7 +23,7 @@ void InsertList(RecordList *L,Record record,int index)
 }
 
 //插入排序
-void InsertSort(RecordList *L)
+void insertSort(RecordList *L)
 {
     printf("开始插入排序...\n");
     
@@ -45,7 +45,7 @@ void InsertSort(RecordList *L)
 }
 
 //数据全部记录
-void PrintRecordList(RecordList L)
+void printRecordList(RecordList L)
 {
     printf("\n关键字\t\t原始位置");
     for (int i = 0; i < L.length; i++) {

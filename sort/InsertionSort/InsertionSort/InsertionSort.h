@@ -8,10 +8,9 @@
 
 #ifndef __InsertionSort__InsertionSort__
 #define __InsertionSort__InsertionSort__
+#endif
 
 #include <stdio.h>
-
-#endif /* defined(__InsertionSort__InsertionSort__) */
 
 //列表最大长度
 #define MAXSIZE 100
@@ -27,16 +26,16 @@ typedef struct {
 
 //排序列表
 typedef struct{
-    Record record[MAXSIZE+1];//记录空间,0单元用作监视哨
+    Record record[MAXSIZE + 1];//记录空间,0单元用作监视哨
     int length;//当前记录数
 }RecordList;//记录表
 
 //根据索引插入纪录到列表
-void InsertList(RecordList *L,Record record,int index);
+void insertRecordByIndex(RecordList *L,Record record,int index);
 
 //插入排序
-void InsertSort(RecordList *L);
+void insertSort(RecordList *L);
 
 //数据全部记录
-void PrintRecordList(RecordList L);
+void printRecordList(RecordList L);
 

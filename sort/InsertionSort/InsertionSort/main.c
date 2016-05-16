@@ -15,22 +15,23 @@ int main() {
     
     RecordList RList;
     //初始化
-    RList.length=0;
+    RList.length = 0;
     
     //插入纪录
-    for (int i=0; i<10; i++) {
-        int item=rand()%10;
-        Record r1={item,i};
-        InsertList(&RList,r1,i);
+    for (int i = 0; i < 10; i++) {
+        int item = rand()%10;
+        Record r1 = {item,i};
+        insertRecordByIndex(&RList,r1,i);
     }
     printf("原始记录表:");
-    PrintRecordList(RList);
+    printRecordList(RList);
     printf("\n");
     
     //直接插入排序
-    InsertSort(&RList);
+    insertSort(&RList);
+    
     printf("直接插入排序后的记录表:");
-    PrintRecordList(RList);
+    printRecordList(RList);
     printf("\n");
     
     return 0;
