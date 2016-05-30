@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>stack.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>9F959E201CFC3ACD00618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F959E2E1CFC49BA00618248</key>
 		<dict>
 			<key>primary</key>
 			<true/>
