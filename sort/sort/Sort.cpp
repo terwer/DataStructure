@@ -2,7 +2,7 @@
 //  Sort.cpp
 //  DataStructure
 //
-//  Created by yifa007 on 16/5/30.
+//  Created by Terwer Green on 16/5/30.
 //  Copyright © 2016年 Terwer Green. All rights reserved.
 //
 
@@ -11,15 +11,18 @@
 #include <ctime> //time
 #include "Sort.h"
 
-inline void Swap(int &a, int &b){
+inline void Swap(int &a, int &b)
+{
     int k = a;
     a = b;
     b = k;
 }
-void bubble_sort(int arr[], int arr_size){
+
+void bubble_sort(int arr[], int arr_size)
+{
     if(arr_size > 1){
         int size = arr_size;
-        for(bool sorted = false; sorted = !sorted; --size)
+        for(bool sorted = false; (sorted = !sorted); --size)
             for(int i = 1; i < size; ++i)
                 if(arr[i-1] > arr[i]){
                     Swap(arr[i-1], arr[i]);
@@ -27,7 +30,9 @@ void bubble_sort(int arr[], int arr_size){
                 }
     }
 }
-void insertion_sort(int arr[], int arr_size){
+
+void insertion_sort(int arr[], int arr_size)
+{
     if(arr_size > 1){
         int size = arr_size;
         for(int i = 1; i < size; ++i){
@@ -41,7 +46,9 @@ void insertion_sort(int arr[], int arr_size){
         }
     }
 }
-void selection_sort(int arr[], int arr_size){
+
+void selection_sort(int arr[], int arr_size)
+{
     for(int i = 0; i < arr_size - 1; ++i){
         int min = i;
         for(int j = i+1; j < arr_size; ++j)
@@ -50,9 +57,11 @@ void selection_sort(int arr[], int arr_size){
         Swap(arr[min], arr[i]);
     }
 }
+
 //quick sort
 /*******************quick sort algorithm 1 *****************
- void QuickSort(int arr[], int lo, int hi){
+ void QuickSort(int arr[], int lo, int hi)
+ {
  if(lo < hi){
  int i = lo, j = hi, x = arr[lo];
  while(i < j){
@@ -73,12 +82,15 @@ void selection_sort(int arr[], int arr_size){
  *********************************************************/
 /****************quick sort algorithm 2******************/
 //reload rand to produce random number in a fixed range
-inline int rand(int p, int q){
+inline int rand(int p, int q)
+{
     int size = q - p + 1;
     //    srand(time(NULL));
     return (p + rand() % size);
 }
-int Partition(int arr[], int lo, int hi){
+
+int Partition(int arr[], int lo, int hi)
+{
     //produce ramdom subscript
     int t = rand(lo, hi);
     Swap(arr[t], arr[hi]);
@@ -92,7 +104,9 @@ int Partition(int arr[], int lo, int hi){
     Swap(arr[++index], arr[hi]);
     return index;
 }
-void QuickSort(int arr[], int lo, int hi){
+
+void QuickSort(int arr[], int lo, int hi)
+{
     if(lo < hi){
         int index = Partition(arr, lo, hi);
         QuickSort(arr, lo, index-1);
@@ -100,12 +114,14 @@ void QuickSort(int arr[], int lo, int hi){
     }
 }
 
-void quick_sort(int arr[], int arr_size){
+void quick_sort(int arr[], int arr_size)
+{
     QuickSort(arr, 0, arr_size-1);
 }
 
 //meger sort
-void Merger(int arr[], int lo, int  mi, int hi){
+void Merger(int arr[], int lo, int  mi, int hi)
+{
     int *temp = new int[hi-lo+1];//temporary merger array
     int i = lo, j = mi + 1;//i is for left-hand,j is for right-hand
     int k = 0;//k is for the temporary array
@@ -127,7 +143,9 @@ void Merger(int arr[], int lo, int  mi, int hi){
     
     delete []temp;
 }
-void MergerSort(int arr[], int lo, int hi){
+
+void MergerSort(int arr[], int lo, int hi)
+{
     int mid;
     if(lo < hi){
         mid = (lo + hi) >> 1;
@@ -136,7 +154,9 @@ void MergerSort(int arr[], int lo, int hi){
         Merger(arr, lo, mid, hi);
     }
 }
-void merger_sort(int arr[], int arr_size){
+
+void merger_sort(int arr[], int arr_size)
+{
     MergerSort(arr, 0, arr_size-1);
 }
 

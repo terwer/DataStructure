@@ -2,7 +2,7 @@
 //  Sort.h
 //  DataStructure
 //
-//  Created by yifa007 on 16/5/30.
+//  Created by Terwer Green on 16/5/30.
 //  Copyright © 2016年 Terwer Green. All rights reserved.
 //
 
