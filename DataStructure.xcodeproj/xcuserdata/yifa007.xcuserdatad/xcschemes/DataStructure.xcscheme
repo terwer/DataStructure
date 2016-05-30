@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E498D4E1B5F615C000D6054"
-               BuildableName = "InsertionSort"
-               BlueprintName = "InsertionSort"
-               ReferencedContainer = "container:InsertionSort.xcodeproj">
+               BlueprintIdentifier = "9F959DBD1CFC109000618248"
+               BuildableName = "DataStructure"
+               BlueprintName = "DataStructure"
+               ReferencedContainer = "container:DataStructure.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D4E1B5F615C000D6054"
-            BuildableName = "InsertionSort"
-            BlueprintName = "InsertionSort"
-            ReferencedContainer = "container:InsertionSort.xcodeproj">
+            BlueprintIdentifier = "9F959DBD1CFC109000618248"
+            BuildableName = "DataStructure"
+            BlueprintName = "DataStructure"
+            ReferencedContainer = "container:DataStructure.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D4E1B5F615C000D6054"
-            BuildableName = "InsertionSort"
-            BlueprintName = "InsertionSort"
-            ReferencedContainer = "container:InsertionSort.xcodeproj">
+            BlueprintIdentifier = "9F959DBD1CFC109000618248"
+            BuildableName = "DataStructure"
+            BlueprintName = "DataStructure"
+            ReferencedContainer = "container:DataStructure.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E498D4E1B5F615C000D6054"
-            BuildableName = "InsertionSort"
-            BlueprintName = "InsertionSort"
-            ReferencedContainer = "container:InsertionSort.xcodeproj">
+            BlueprintIdentifier = "9F959DBD1CFC109000618248"
+            BuildableName = "DataStructure"
+            BlueprintName = "DataStructure"
+            ReferencedContainer = "container:DataStructure.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
