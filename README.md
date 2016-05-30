@@ -13,4 +13,6 @@ Contents
 
 >queue 队列
 
+>generalizedlist 广义表
+
 >sort 排序
