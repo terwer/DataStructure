@@ -18,7 +18,7 @@ Status createList(SqList *list)
     for (int i = 0; i < MAX_SIZE; i++) {
         list->elem[i] = "green";
         list->length = i;
-        if (i == MAX_SIZE -3) {
+        if (i == MAX_SIZE - 3) {
             list->elem[i] = "terwer";
         }
     }
