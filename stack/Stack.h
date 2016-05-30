@@ -16,9 +16,13 @@ typedef struct {
 } Stack;
 
 void initStack(Stack * stack, size_t size);
+
 void push(Stack * stack, char item);
+
 char pop(Stack * stack);
+
 int isEmpty(Stack * stack);
+
 void clearStack(Stack * stack);
 
 

@@ -17,11 +17,17 @@ struct Node {
 };
 
 struct Node *createList();
+
 void deleteNode(struct Node *prev);
+
 struct Node *insertNode(struct Node *prev, ElemType data);
+
 int length(struct Node *head);
+
 void print(struct Node *head);
+
 struct Node *getNode(struct Node *head, int i);
+
 void deleteList(struct Node *head);
 
 #endif
