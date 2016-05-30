@@ -60,9 +60,9 @@
 		1E498D511B5F615C000D6054 /* InsertionSort */ = {
 			isa = PBXGroup;
 			children = (
-				1E498D521B5F615C000D6054 /* main.c */,
-				1E498D591B5F622C000D6054 /* InsertionSort.c */,
 				1E498D5A1B5F622C000D6054 /* InsertionSort.h */,
+				1E498D591B5F622C000D6054 /* InsertionSort.c */,
+				1E498D521B5F615C000D6054 /* main.c */,
 			);
 			path = InsertionSort;
 			sourceTree = "<group>";

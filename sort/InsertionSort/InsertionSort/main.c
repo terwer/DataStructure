@@ -6,32 +6,31 @@
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "InsertionSort.h"
 
 int main() {
     
-    RecordList RList;
+    RecordList recordList;
     //初始化
-    RList.length = 0;
+    recordList.length = 0;
     
     //插入纪录
     for (int i = 0; i < 10; i++) {
-        int item = rand()%10;
-        Record r1 = {item,i};
-        insertRecordByIndex(&RList,r1,i);
+        int item = rand() % 10;
+        Record record = {item,i};
+        insertRecordByIndex(&recordList,record,i);
     }
     printf("原始记录表:");
-    printRecordList(RList);
+    printRecordList(recordList);
     printf("\n");
     
     //直接插入排序
-    insertSort(&RList);
+    insertSort(&recordList);
     
     printf("直接插入排序后的记录表:");
-    printRecordList(RList);
+    printRecordList(recordList);
     printf("\n");
     
     return 0;

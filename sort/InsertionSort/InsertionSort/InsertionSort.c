@@ -12,12 +12,12 @@
 void insertRecordByIndex(RecordList *L,Record record,int index)
 {
     printf("正在插入数据%d，其他信息%d\n",record.key,record.otherinfo);
-    int i=L->length-1;
+    int i = L->length-1;
     //从L->length-1从后往前扫描
-    for (; i>=index;--i) {
-        L->record[i+1]=L->record[i];
+    for (; i >= index;--i) {
+        L->record[i+1] = L->record[i];
     }
-    L->record[index]=record;
+    L->record[index] = record;
     ++L->length;
     printf("插入后当前长度：%d\n",L->length);
 }
@@ -31,12 +31,12 @@ void insertSort(RecordList *L)
     //2、从第二个元素开始, 依次循环插入
     //3、可以将元素看成两部分，已经排好序的和尚未排序的，每次从尚未排好序的元素中取出元素和已经排好序的比较，插入到指定位置
     for (int i = 1; i < L->length; i++) {
-        int j=i;
-        while (j>0&&(L->record[j-1].key)>(L->record[j].key)) {
+        int j = i;
+        while (j > 0 && (L->record[j-1].key) > (L->record[j].key)) {
             int temp;
-            temp=L->record[j-1].key;
-            L->record[j-1].key=L->record[j].key;
-            L->record[j].key=temp;
+            temp = L->record[j-1].key;
+            L->record[j-1].key = L->record[j].key;
+            L->record[j].key = temp;
             --j;
         }
     }

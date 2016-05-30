@@ -10,8 +10,6 @@
 #define __InsertionSort__InsertionSort__
 #endif
 
-#include <stdio.h>
-
 //列表最大长度
 #define MAXSIZE 100
 
