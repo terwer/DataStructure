@@ -24,7 +24,7 @@
 		9F959E721CFD294000618248 /* priority_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E6D1CFD294000618248 /* priority_queue.cpp */; };
 		9F959E731CFD294000618248 /* queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E6F1CFD294000618248 /* queue.cpp */; };
 		9F959E7D1CFD2D6D00618248 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E7C1CFD2D6D00618248 /* main.cpp */; };
-		9F959E841CFD2D8D00618248 /* BinaryTreeSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E811CFD2D8D00618248 /* BinaryTreeSort.cpp */; };
+		9F959E841CFD2D8D00618248 /* BinaryTreeSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E811CFD2D8D00618248 /* BinaryTreeSearch.cpp */; };
 		9F959E851CFD2D8D00618248 /* HashSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E821CFD2D8D00618248 /* HashSearch.cpp */; };
 		9F959E861CFD2D8D00618248 /* SeqSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F959E831CFD2D8D00618248 /* SeqSearch.cpp */; };
 		BE02010C1CFBFE1E0087969B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE02010B1CFBFE1E0087969B /* main.cpp */; };
@@ -162,10 +162,10 @@
 		9F959E701CFD294000618248 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		9F959E7A1CFD2D6D00618248 /* search */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = search; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F959E7C1CFD2D6D00618248 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		9F959E811CFD2D8D00618248 /* BinaryTreeSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTreeSort.cpp; sourceTree = "<group>"; };
+		9F959E811CFD2D8D00618248 /* BinaryTreeSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTreeSearch.cpp; sourceTree = "<group>"; };
 		9F959E821CFD2D8D00618248 /* HashSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HashSearch.cpp; sourceTree = "<group>"; };
 		9F959E831CFD2D8D00618248 /* SeqSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SeqSearch.cpp; sourceTree = "<group>"; };
-		9F959E8B1CFD2E7A00618248 /* BinaryTreeSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryTreeSort.h; sourceTree = "<group>"; };
+		9F959E8B1CFD2E7A00618248 /* BinaryTreeSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryTreeSearch.h; sourceTree = "<group>"; };
 		9F959E8C1CFD2FC800618248 /* HashSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashSearch.h; sourceTree = "<group>"; };
 		9F959E8D1CFD2FD000618248 /* SeqSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeqSearch.h; sourceTree = "<group>"; };
 		BE0201091CFBFE1E0087969B /* queue */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = queue; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,8 +364,8 @@
 		9F959E7B1CFD2D6D00618248 /* search */ = {
 			isa = PBXGroup;
 			children = (
-				9F959E8B1CFD2E7A00618248 /* BinaryTreeSort.h */,
-				9F959E811CFD2D8D00618248 /* BinaryTreeSort.cpp */,
+				9F959E8B1CFD2E7A00618248 /* BinaryTreeSearch.h */,
+				9F959E811CFD2D8D00618248 /* BinaryTreeSearch.cpp */,
 				9F959E8C1CFD2FC800618248 /* HashSearch.h */,
 				9F959E821CFD2D8D00618248 /* HashSearch.cpp */,
 				9F959E8D1CFD2FD000618248 /* SeqSearch.h */,
@@ -705,7 +705,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F959E841CFD2D8D00618248 /* BinaryTreeSort.cpp in Sources */,
+				9F959E841CFD2D8D00618248 /* BinaryTreeSearch.cpp in Sources */,
 				9F959E7D1CFD2D6D00618248 /* main.cpp in Sources */,
 				9F959E851CFD2D8D00618248 /* HashSearch.cpp in Sources */,
 				9F959E861CFD2D8D00618248 /* SeqSearch.cpp in Sources */,

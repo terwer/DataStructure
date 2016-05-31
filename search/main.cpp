@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "BinaryTreeSort.h"
+#include "BinaryTreeSearch.h"
 
 int main(int argc, const char * argv[])
 {

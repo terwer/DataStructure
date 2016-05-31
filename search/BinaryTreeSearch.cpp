@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "BinaryTreeSort.h"
+#include "BinaryTreeSearch.h"
 
 /* 操作结果：构造空二叉树T */
 void InitBiTree(BiTree T)
