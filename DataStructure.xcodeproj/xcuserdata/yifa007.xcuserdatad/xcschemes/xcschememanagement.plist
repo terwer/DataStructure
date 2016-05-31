@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>graph.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>linkedlist.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -54,6 +59,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>tree.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -93,6 +103,16 @@
 			<true/>
 		</dict>
 		<key>9F959E471CFD209300618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F959E551CFD230700618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F959E601CFD230F00618248</key>
 		<dict>
 			<key>primary</key>
 			<true/>

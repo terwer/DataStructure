@@ -13,6 +13,14 @@ Contents
 
 >queue 队列
 
+>string 串
+
 >generalizedlist 广义表
+
+>tree 树
+
+>graph 图
+
+>lookup 查找
 
 >sort 排序
