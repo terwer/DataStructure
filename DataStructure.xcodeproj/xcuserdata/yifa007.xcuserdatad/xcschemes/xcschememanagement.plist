@@ -9,10 +9,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>generalizedlist.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>linkedlist.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
+		</dict>
+		<key>lookup.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>queue.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>scds.xcscheme</key>
 		<dict>
@@ -33,6 +48,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>string.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -63,6 +83,26 @@
 			<true/>
 		</dict>
 		<key>9F959E2E1CFC49BA00618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F959E3C1CFD1FCC00618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F959E471CFD209300618248</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE0201081CFBFE1E0087969B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE0201161CFC8DE80087969B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
