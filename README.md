@@ -21,6 +21,6 @@ Contents
 
 >graph 图
 
->lookup 查找
+>search 查找
 
 >sort 排序
